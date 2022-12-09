@@ -1,7 +1,7 @@
 version: "4.12"
 services:
   rasa:
-    image: rasa-v1
+    image: rohitr1997/rasa_v1:latest
     container_name: my-rasa-container
     working_dir: /app
     # build: "./"
@@ -31,8 +31,8 @@ services:
     #   - ./result:/app/result
     #   - ./detected_result:/app/detected_result
 
-  rasa-actions:
-    image: rasa-v1
+  rasa_actions:
+    image: rohitr1997/rasa_v1:latest
     container_name: my-rasa-actions-container
     working_dir: /app/actions
     # build: "./"
@@ -47,8 +47,8 @@ services:
     networks:
       - all
 
-  db-pgsql:
-    image: db-post
+  db_pgsql:
+    image: rohitr1997/db_post:latest
     container_name: my-db-container
     # build: "./"
     # environment:   # Set up postgres database name and password
@@ -65,8 +65,8 @@ services:
     networks:
       - all
 
-  chatbot-ui:
-    image: chatbot-ui
+  chatbot_ui:
+    image: rohitr1997/chatbot_ui:latest
     container_name: my-ui-container
     ports:
       - '80:80'

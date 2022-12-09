@@ -30,7 +30,7 @@ services:
     #   - ./result:/app/result
     #   - ./detected_result:/app/detected_result
 
-  rasa_actions:
+  rasa-actions:
     image: rasa_v1
     working_dir: /app/actions
     # build: "./"
@@ -45,7 +45,7 @@ services:
     networks:
       - all
 
-  db_pgsql:
+  db-pgsql:
     image: db_post
     # build: "./"
     # environment:   # Set up postgres database name and password
@@ -62,7 +62,7 @@ services:
     networks:
       - all
 
-  chatbot_ui:
+  chatbot-ui:
     image: chatbot_ui
     ports:
       - '80:80'

@@ -1,0 +1,59 @@
+id,intent,user_input,bot_reply,entity_name,entity_value,action
+1,start_bot,,,,,
+2,,/start_bot,,,,
+3,,,,,,utter_start_bot
+4,,,"Hi, I'm  a chatbot assistant for helping you related to your job queries,  
+ 
+ The following actions are possible for me -  
+ 1. Help find a open job  
+ 2. Provide information about the company (Benefits, Business units of the company, headquarters, etc)  
+ 3. Information about the interview process  
+ 
+ Type '/help' or 'Help me' to find all the possible actions  
+ 
+ Click on the below button to get started !  
+",,,
+5,greet,,,,,
+6,,/greet,,,,
+7,,,,,,utter_greet
+8,,,Hello! How can I help you?,,,
+9,,,,,,utter_ask_name_form_first_name
+10,,,What is your first name?,,,
+11,nlu_fallback,,,,,
+12,,test,,,,
+13,,,,Performance_evaluation,,
+14,,,,,test,
+15,,,,,,utter_ask_name_form_last_name
+16,,,What is your last name?,,,
+17,nlu_fallback,,,,,
+18,,test,,,,
+19,,,,Performance_evaluation,,
+20,,,,,test,
+21,,,,,,utter_ask_name_form_email_address
+22,,,What is your Email address?,,,
+23,User_details_email_address,,,,,
+24,,test@test.com,,,,
+25,,,,email_address,,
+26,,,,,test@test.com,
+27,,,,,,utter_ask_name_spelled_correctly
+28,,,"Are the following details correct?  
+ 
+ 1. First Name = test  
+ 
+ 2. Last Name = test  
+ 
+ 3. Email ID = test@test.com",,,
+29,affirm_name,,,,,
+30,,/affirm_name,,,,
+31,,,,,,utter_remember
+32,,,I will remember that your name is test test and email address is test@test.com!,,,
+33,End_chat,,,,,
+34,,Thanks,,,,
+35,,,,,,utter_End_chat
+36,,,Thanks for your time,,,
+37,rating,,,,,
+38,,/rating,,,,
+39,,,,,,utter_provide_rating
+40,,,Please rate your experience with the chatbot,,,
+41,rating_4,,,,,
+42,,/rating_4,,,,

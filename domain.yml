@@ -1,0 +1,1114 @@
+version: "3.1"
+intents:
+
+  # Company FAQ intents
+  - About_Dornier
+  - Dornier_Business
+  - Dornier_Locations
+  - Dornier_Headquarters
+  - Dornier_Workforce
+  - Dornier_Projects
+  - Business_sector_emobility
+  - Business_sector_nuclear
+  - Business_sector_water
+  - Business_sector_aviation
+  - Business_sector_power
+  - Workplace_gender_equality
+  - Workplace_policy
+  - Working_ergonomics
+  - Breaks
+  - Nonsmoker_policy
+  - Medical_facilities
+  - Ideal_employee
+  - Leadership_style
+  - Corporate_culture
+  - Performance_evaluation
+  - Promoting_strengths_talents
+  - Response_timeline
+  - Apply_to_dornier
+  - Application_process
+  - Job_ticket
+  - Company_pension_scheme
+  - Christmas_bonus
+  - Holiday_pay
+  - Work_from_home
+  - Work_from_home_100
+  - Benefits_provided
+  - Interview_process
+  - Current_job_openings
+  - Notice_period
+  - Abroad_assignment
+  - Customers
+  - Diversity_at_dornier
+  - Company_car
+  - Parking_facilities
+  - Documents_needed
+  - Probationary_period
+  - working_hours
+  - Unsolicited_application
+  - Internship
+  - Bachelor_Master_thesis
+  - Abroad_work
+  - External_event
+  - Inhouse_projects
+  - Career_advancement_promotion
+  - Working_student
+  - Internal_job_change
+  - Travel_expense_interview
+  # - faq
+  - greet
+  # User detail intents
+  - User_details_first_name:
+      use entities:
+        - first_name
+  - User_details_last_name:
+      use entities:
+        - last_name
+  - User_details_email_address:
+      use entities:
+        - email_address
+  - clear_first_name
+  - clear_last_name
+  - clear_email_address
+  - clear_all_name
+  - deny_name
+  - affirm_name                    
+  - i_am_a_bot
+  - start_bot
+  - End_chat
+  - out_of_scope
+  - help
+  - benefits
+  - info_abt_interview
+
+  # job form intents
+  - working_student
+  - intern
+  - permanent
+
+  - administrative_and_clerical
+  - installation_and_maintenance_repair
+  - engineering
+  - sales_and_business_development
+  - it_software
+  - business_and_strategic_development
+
+  - Ask_user_details
+  - affirm_job
+  - deny_job
+  - affirm_clear_params
+  - deny_clear_params
+  - clear_job_type
+  - clear_job_domain
+  - clear_job_keywords
+  - clear_all
+
+  - User_details_job_type:
+      use entities:
+        - job_type
+  - User_details_job_domain:
+      use entities:
+        - job_domain
+  - User_details_job_keywords:
+      use entities:
+        - job_keywords
+  - job_results:
+      use entities:
+        - id     
+
+  # feedback form intents
+  - rating
+  - rating_1
+  - rating_2
+  - rating_3
+  - rating_4
+
+entities:
+  # User detail entities 
+  - first_name
+  - last_name
+  - email_address
+  # Company FAQ entities
+  - Business_units
+  - Locations
+  - Headquarters
+  - Workforce
+  - Projects
+  - Emobility
+  - Nuclear
+  - Water
+  - Aviation
+  - Power
+  - Gender_equality
+  - Workplace_policy
+  - Working_ergonomics
+  - Breaks
+  - Nonsmoker
+  - Medical_facilities
+  - Ideal_employee
+  - Leadership
+  - Corporate_culture
+  - Performance_evaluation
+  - Promoting_strengths
+  - Request_timeline
+  - Apply_Dornier
+  - Application_process
+  - Job_ticket
+  - Company_pension
+  - Christmas_bonus
+  - Holiday_pay
+  - Work_from_home
+  - Work_from_home_100
+  - Benefits_provided
+  - Interview_process
+  - Current_job_openings
+  - Notice_period
+  - Abroad_assignment
+  - Customers
+  - Diversity_at_Dornier
+  - Company_car
+  - Parking_facilities
+  - Documents_needed
+  - Probationary_period
+  - Working_hours
+  - Unsolicited_application
+  - Internship
+  - Thesis
+  - Abroad_work
+  - External_event
+  - Inhouse_projects
+  - Career_advancement
+  - Working_student
+  - Internal_job_change
+  - Travel_expense_interview
+
+  # job-form entities
+  - job_type
+  - job_domain
+  - job_keywords
+  - id
+
+
+slots:
+  first_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        # entity: first_name
+        conditions:
+         - active_loop: name_form
+           requested_slot: first_name
+          
+  last_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        # entity: last_name
+        conditions:
+         - active_loop: name_form
+           requested_slot: last_name
+
+  email_address:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: email_address
+        conditions:
+         - active_loop: name_form
+           requested_slot: email_address
+
+  name_form_clear_field:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm_name
+        value: True
+
+      - type: from_intent
+        intent: deny_name
+        value: False
+
+  name_form_clear_field_params:
+    type: categorical
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: clear_first_name
+        value: first_name
+
+      - type: from_intent
+        intent: clear_last_name
+        value: last_name
+
+      - type: from_intent
+        intent: clear_email_address
+        value: email_address
+
+      - type: from_intent
+        intent: clear_all_name
+        value: all_name
+
+  job_type:
+    type: categorical
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: working_student
+        value: working_student
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_type
+
+      - type: from_intent
+        intent: intern
+        value: intern
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_type
+
+      - type: from_intent
+        intent: permanent
+        value: permanent
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_type
+          
+  job_domain:
+    type: categorical
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: administrative_and_clerical
+        value: administrative_and_clerical
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_domain
+
+      - type: from_intent
+        intent: installation_and_maintenance_repair
+        value: installation_and_maintenance_repair
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_domain
+      
+      - type: from_intent
+        intent: engineering
+        value: engineering
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_domain
+      
+      - type: from_intent
+        intent: sales_and_business_development
+        value: sales_and_business_development
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_domain
+      
+      - type: from_intent
+        intent: it_software
+        value: it_software
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_domain
+      
+      - type: from_intent
+        intent: business_and_strategic_development
+        value: business_and_strategic_development
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_domain
+
+  job_keywords:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        entity: job_keywords
+        conditions:
+         - active_loop: job_form
+           requested_slot: job_keywords
+
+  link:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  job_form_confirmation_search:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm_job
+        value: True
+
+      - type: from_intent
+        intent: deny_job
+        value: False
+
+  job_form_clear_field:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm_clear_params
+        value: True
+
+      - type: from_intent
+        intent: deny_clear_params
+        value: False
+
+  job_form_clear_field_params:
+    type: categorical
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: clear_job_type
+        value: job_type
+
+      - type: from_intent
+        intent: clear_job_domain
+        value: job_domain
+
+      - type: from_intent
+        intent: clear_job_keywords
+        value: job_keywords
+
+      - type: from_intent
+        intent: clear_all
+        value: clear_all
+
+  id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: id
+        
+
+  # rating:
+  #   type: categorical
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_intent
+  #       intent: rating_1
+  #       value: rating_1
+
+  #     - type: from_intent
+  #       intent: rating_2
+  #       value: rating_2
+
+  #     - type: from_intent
+  #       intent: rating_3
+  #       value: rating_3
+
+  #     - type: from_intent
+  #       intent: rating_4
+  #       value: rating_4
+
+
+
+  # job_level_student:
+  #   type: bool
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: custom
+  #       conditions:
+  #         - active_loop: job_form
+
+  # job_level_graduate:
+  #   type: bool
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: custom
+  #       conditions:
+  #         - active_loop: job_form
+
+  # job_level_Working Professional:
+  #   type: bool
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: custom
+  #       conditions:
+  #         - active_loop: job_form             
+
+
+
+  # name_spelled_correctly:
+  #   type: bool
+  #   mappings:
+  #   - type: custom
+  #     action: validate_name_form
+
+  # requested_slot:
+  #   type: any
+  #   mappings:
+  #   - type: custom
+  #     action: validate_name_form
+
+
+responses:
+  utter_User_details:
+    - text: "Thanks for providing the details"
+    - text: "Thank you for providing your details"
+    - text: "Thank you for the details"
+
+  utter_Ask_user_details:
+    - text: "Could you please provide me your Name and email address?"
+    - text: "Could you please help me with your Name and email address?"
+    - text: "Please help me with your basic details like Name and Email address"
+    - text: "Please provide me with your details like Name and Email address"
+    - text: "Please help us with your details like Name and Email address"
+
+  utter_End_chat:
+    - buttons:
+      - payload: /rating
+        title: End chat
+    # - text: "Thank you !"
+    # - text: "Thanks, have a good day ! "
+      text: "Thanks for your time"
+
+  utter_out_of_scope:
+    - text: "Sorry, I could not understand the request"
+    - text: "Sorry, I'm unable to understand the request"
+    - text: "Sorry, Could you please provide your response again?"
+    - text: "Sorry, I'm unable to help you with that request"
+
+  utter_ask_rephrase:
+    - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+
+  utter_About_Dornier:
+    - text: "The Dornier Group is a global one-stop store for engineering services with a focus on the infrastructure sector"
+    - text: "Our Company is a global one-stop store for engineering services with a focus on the infrastructure sector"
+    - text: "The Dornier group is a global one-stop store for engineering services with our focus primarily on the infrastructure sector"
+    - text: "Our company is a global one-stop store for engineering services with our focus primarily on the infrastructure sector"
+
+  utter_Dornier_Business:
+    - text: "The Dornier Group has 5 business units, namely - Mobility, Nuclear Services, Power and heat, Renewables, and water"
+    - text: "The Dornier Group works in the fields of Mobility, Nuclear Services, Power and heat, Renewables, and water"
+    - text: "We have 5 business units, namely - Mobility, Nuclear Services, Power and heat, Renewables, and water"
+    - text: "We work in the fields of Mobility, Nuclear Services, Power and heat, Renewables, and water"
+    - text: "We provide our services in the fields of Mobility, Nuclear Services, Power and heat, Renewables, and water"
+  
+  utter_Dornier_Locations:
+    - text: "Dornier group provides its services at 18 locations in 13 countries world wide"
+    - text: "We provide our services at 18 locations in 13 countries world wide"
+    - text: "The Dornier group provides its services at 18 locations in 13 countries world wide every year"
+    - text: "We are currently positioned in 13 countries with over 2000 employees"
+    - text: "We are currently over 2000 interdisciplinary experts and have offices in 13 countries. Accordingly, we are very internationally positioned here"
+    - text: "We are located in over 13 countries with over 2000 interdisciplinary experts"
+    - text: "We are present in 13 countries with over 2000 interdisciplinary experts"
+
+  utter_Dornier_Headquarters:
+    - text: "The Dornier group is headquartered in Germany"
+    - text: "We are headquartered in Germany"
+    - text: "Our Headquarters are present in Germany"
+
+  utter_Dornier_Workforce:
+    - text: "More than 2000 people work at the dornier group"
+    - text: "Over 2000 people work at the Dornier group"
+    - text: "We have a workforce of more than 2000 people at our company"
+    - text: "We have a workforce of more than 2000 people at the Dornier group"
+
+  utter_Dornier_Projects:
+    - text: "More than 1500 projects are launched worldwide by Dornier Group each year"
+    - text: "Dornier group provides its services at 18 locations in 13 countries world wide"
+    - text: "We launch more than 1500 projects worldwide each year"
+    - text: "At the Dornier group we launch more than 1500 projects world wide each year"
+
+  utter_Business_sector_emobility:
+    - text: "The dornier group is working on new mobility concepts and sustainable urban mobility, which includes electric mobility as well as self driving vehicles"
+    - text: "The dornier group is active in the expansion and operation of airports worldwide"
+    - text: "We are working on new mobility concepts and sustainable urban mobility, which includes electric mobility as well as self driving vehicles"
+    - text: "At the Dornier group we are working on new mobility concepts and sustainable urban mobility, which includes electric mobility as well as self driving vehicles"
+  
+  utter_Business_sector_aviation:
+    - text: "Yes, The dornier group is working in the aviation sector as well, and is active today in the expansion and operation of airports worldwide"
+    - text: "The dornier group is active in the expansion and operation of airports worldwide" 
+    - text: "We are active in the expansion and operation of airports worldwide"  
+    - text: "We work in the aviation sector as well, and are active in the expansion and operation of airports worldwide"
+    - text: "We provide our services in the aviation sector as well, and we are active in the expansion and operation of airports worldwide"
+  
+  utter_Business_sector_nuclear:
+    - text: "Yes, the dornier group works in the nuclear sector"
+    - text: "The dornier group provides services such as dismantling, disposal, and packaging planning to disposal documentation and the deployment of radiation protection workers for operation and dismantling for the nuclear sector"
+    - text: "The services from renewable energy sector range from renewable energy resource assessment and owners engineering to project implementation" 
+    - text: "We provide services such as dismantling, disposal, and packaging planning to disposal documentation and the deployment of radiation protection workers for operation and dismantling for the nuclear sector"
+  
+  utter_Business_sector_power:
+    - text: "The dornier group helps its customers to build plants using the EPC process (Engineering, Procurement, Construction)"
+    - text: "Yes, the dornier group plans renewable energy projects tailored to customer, country, and project-specific requirements" 
+    - text: "Yes, the dornier group provides its services in the renewable energy sector"
+    - text: "The services from renewable energy sector range from renewable energy resource assessment and owners engineering to project implementation"
+    - text: "We help our customers to build plants using the EPC process (Engineering, Procurement, Construction)"
+    - text: "We plan renewable energy projects which are tailored to customer, country, and project-specific requirements"
+    - text: "We help our customers to build renewable energy products tailored to their needs"
+    - text: "We provide our services in the renewable energy sector"
+
+  utter_Business_sector_water:
+    - text: "Yes, the dornier group works in the water sector"
+    - text: "The dornier group provides services such as water resource management, water supply and wastewater disposal to environmental management" 
+    - text: "Yes, we provide our services in the water sector"
+    - text: "We provide services in water resource management in addition to our wide range of other services"
+
+  utter_Workplace_gender_equality:
+    - text: "Yes, we actively promote equal rights for employees regardless of gender or origin"
+    - text: "We promote equal rights for employees regardless of gender or origin"
+
+  utter_Workplace_policy:
+    - text: "We aim to create a modern and healthy workplace environment for all employees in all our offices worldwide"
+    - text: "Our Workplace policy aims to create a modern and healthy workplace environment for all employees in all our offices worldwide"
+
+  utter_Working_ergonomics:
+    - text: "The dornier group keeps itself abreast of the latest technologies and scientific findings, in the field of occupational health and safety"
+    - text: "We always keep ourselves abreast of the latest technologies and scientific findings in the field of occupational health and safety"
+
+  utter_Breaks:
+    - text: "The employees are entitled to a lunch break of upto 45 minutes daily, also other work breaks may be divided into work breaks of 15 minutes each"
+    - text: "We entitle our employees to a lunch break of upto 45 minutes daily, in addition other work breaks can be divided into 15 minutes each"
+
+  utter_Nonsmoker_policy:
+    - text: "To ensure the protection of non-smoker employees, the dornier group prohibits smoking inside company building or office areas"
+    - text: "To ensure the safety of our non-smoker employees we prohibit smoking inside the company building or office areas"
+
+  utter_Medical_facilities:
+    - text: "The dornier group provides first aid dressings, medication and also medical supplies at all their sites"
+    - text: "We provide first aid dressings, medication and also medical supplies at all their sites"
+
+  utter_Ideal_employee:
+    - text: "We are characterized by honesty, openness, combined with discipline and good cooperation. As a modern group of companies, we value diversity and welcome employees (m/f/d) - regardless of age, gender, cultural, social or ethnic origin, religion or belief"
+    - text: "Our employees are characterized by honesty, openness, combined with discipline and good cooperation. As a modern group of companies, we value diversity and welcome employees (m/f/d) - regardless of age, gender, cultural, social or ethnic origin, religion or belief"
+    - text: "Our best employees are characterized by honesty, openness, good cooperation as well as they are combined with discipline. As a modern group of companies, we value diversity and welcome employees (m/f/d) - regardless of age, gender, cultural, social or ethnic origin, religion or belief"
+  
+  utter_Leadership_style:
+    - text: "Our leadership style is open, cooperative and appreciative"
+    - text: "The leadership style at the company is open, co-operative and appreciative"
+    - text: "The leadership style at the Dornier group is open, co-operative and appreciative"
+    - text: "The leadership style at this firm is open, co-operative and appreciative "
+
+  utter_Corporate_culture:
+    - text: "We are in an open, strong and dynamic company with a corresponding 'You' culture"
+    - text: "The company follows an open, strong and dynamic culture with a corresponding 'You' culture"
+    - text: "The Dornier group follows an open, strong and dynamic culture with a corresponding 'You' culture"
+    - text: "We follow an open, strong and dynamic culture with a corresponding 'You' culture"
+
+  utter_Performance_evaluation:
+    - text: "Regardless of individual agreements, there are also (depending on the business unit) corresponding success agreements/variable remuneration"
+
+  utter_Promoting_strengths_talents:
+    - text: "We quickly recognize young talents and support them accordingly with excellent performance. So we have a 'Young Professionals Program' that takes care of them. With the 'Dornier Campus', we have also launched a future-oriented learning academy. In addition, the departments have an annual training budget at their disposal" 
+    - text: "At the Dornier group, we recognize young talents and support them. We have a 'Young Professionals Program' that takes care of them. In addition, we also have 'Dornier campus', which has launched its future-oriented academy. In addition, the departments also have an annual training budget" 
+    - text: "At the company we recognize young talents and support them. We have a 'Young Professionals Program' that takes care of them. In addition, we also have 'Dornier campus', which has launched its future-oriented academy. In addition, the departments also have an annual training budget"
+    - text: "At our firm, we recognize young talent and to support them, we have the 'Young Professionals Program'. We also have 'Dornier campus', which has launched its future-oriented academy. In addition, the departments also have an annual training budget"
+  
+  utter_Response_timeline:
+    - text: "We will get back to you as soon as we can. Don't worry, you will get an answer from us in any case. However, this may take some time due to the equal opportunities for all applicants. Basically, we try to give feedback within 48 hours"
+    - text: "We would get back to you as soon as possible, we would provide an appropriate response in any case. But, this may take some time due to the equal opportunities provided to all applicants"
+    - text: "We would get back to you as soon as we can, to provide an appropriate response. But this may take some time due to the equal opportunities provided to each applicant. Basically we try to give feedback within 48 hours"
+    - text: "We will get back to you as soon as possible, to provide an appropriate response. But this may take some time due to the equal opportunities provided to each applicant"
+
+  utter_Apply_to_dornier:
+    - text: "You can apply to a job application via the 'Apply Now' button"
+    - text: "You can apply using the 'Apply Now' button"
+    - text: "You can apply to the application using the 'Apply Now' button"
+
+  utter_Application_process:
+    - text: "After your documents have been screened, we will forward them to the appropriate department if they are suitable. After positive feedback from the department, we will arrange a first appointment with you. This usually takes place online"
+    - text: "After your documents have been screened, we forward them to the appropriate department to check if they are suitable. After a positive feedback from the department, we would arrange an meeting with you. This would usually take place online"
+    - text: "As soon as your documents have been screened, they are forwarded to the appropriate department to check if they are suitable. After a positive feedback from the department, an meeting would be organized with you. This would usually be taken online"
+    - text: "After screening of your documents, they are forwarded to the appropriate department if they are suitable. After a positive feedback is received form the department, we would then arrange a meeting with you. This meeting would usually take place online "
+
+  utter_Job_ticket:
+    - text: "We do not pay a job ticket. However, it is possible to lease a job bike"
+    - text: "We do not pay a job ticket. But it is possible to lease a job bike"
+    - text: "We do not pay a job ticket. However, there is a possiblity to lease a job bike"
+
+  utter_Company_pension_scheme:
+    - text: "Yes,  you would find the details after the interview"
+    - text: "Yes, you will find out details after your interview"
+    - text: "Yes, the details would be provided after the interview"
+    - text: "Yes, more details would be provided after the interview"
+
+  utter_Christmas_bonus:
+    - text: "This varies depending the employment and the contract"
+    - text: "This totally depends on the employment and the contract of the employee"
+    - text: "This depends on the employment and the contract of the employee"
+    - text: "this varies as per the employment and the contract of the employee"
+
+  utter_Holiday_pay:
+    - text: "This varies depending the employment and the contract"
+    - text: "This totally depends on the employment and the contract of the employee"
+    - text: "This depends on the employment and the contract of the employee"
+    - text: "this varies as per the employment and the contract of the employee"
+  
+  utter_Work_from_home:
+    - text: "We have a 50/50 rule here. Where possible, you can work from home up to two days a week after prior consultation and approval with your supervisor"
+    - text: "We do have a 50/50 rule for hybrid modes. You can work from home upto 2 days a week after prior consultation and approval with your supervisor"
+    - text: "We provide a 50/50 rule for hybrid modes, where you can work from home upto 2 days a week after prior consultation and approval with your supervisor"
+    - text: "We have a 50/50 rule, where you can work from home upto 2 days a week after prior consultation and approval with your supervisor"
+
+  utter_Benefits_provided:
+    - text: "We offer a family-friendly corporate culture through KITA subsidies, flexible working hours, company pension schemes, job bikes and hybrid working. Likewise, a monthly goodie in the form of a prepaid card after a successfully completed probationary period"
+    - text: "We offer a family-friendly corporate culture with the help of KITA subsidies, flexible working hours, company pension schemes, job bikes and hybrid working. A monthly goodie in the form of prepaid card is also given after completion of successful probationary period"
+    - text: "We provide benefits like family-friendly corporate culture, flexible hours, company pension schemes, job bikes and hybrid working. Also, a monthly goodie in the form of a prepaid card is also given after successful completion of probationary period"
+    - text: "We provide benefits like family-friendly corporate culture, flexible hours, company pension schemes, job bikes and also hybrid working. We also provide a montly goodie bag after successful completion of the probationary period "
+
+  utter_Interview_process:
+    - text: "As a rule, you will be confronted by a discussion partner from the HR department as well as colleagues from the respective departments"
+    - text: "As a rule, you would be confronted by a discussion partner from the HR department as well as colleagues from the respective departments"
+    - text: "As a rule, you would be meeting a HR personnel as well as colleagues from the respective departments"
+    - text: "For the interview, you would be confronted by a discussion partner from the HR department as well as colleagues from the respective departments"
+    - text: "For the interview, you will be meeting a HR personnel as well as colleagues from the respective departments"
+
+  utter_Current_job_openings:
+    - text: "The current job openings can also be found [Here](https://dornier-group.jobs.personio.com/)"
+    - text: "The recent job openings can be also found [Here](https://dornier-group.jobs.personio.com/)"
+    - text: "The current job vacancies can also be found [Here](https://dornier-group.jobs.personio.com/)"
+    - text: "The open job vacancies can also be found [Here](https://dornier-group.jobs.personio.com/)"
+
+  utter_Notice_period:
+    - text: "This varies depending the employment and the contract"
+    - text: "This totally depends on the employment and the contract of the employee"
+    - text: "This depends on the employment and the contract of the employee"
+    - text: "this varies as per the employment and the contract of the employee"
+
+  utter_Abroad_assignment:
+    - text: "This varies depending the employment and the contract"
+    - text: "This totally depends on the employment and the contract of the employee"
+    - text: "This depends on the employment and the contract of the employee"
+    - text: "this varies as per the employment and the contract of the employee"
+
+  utter_Work_from_home_100:
+    - text: "No, unfortunately this is not  possible"
+    - text: "No, this is not possible"
+    - text: "Unfortunately this is not possible"
+    - text: "No, it is not possible"
+
+  utter_Customers:
+    - text: "We work with well-known customers such as Vattenfall Europe, Deutsche Bahn AG, Airbus Industries Europe AG, Siemens AG (and many more)"
+    - text: "We are associated with well-known customers such as Vattenfall Europe, Deutsche Bahn AG, Airbus Industries Europe AG, Siemens AG (and many more)"
+    - text: "We have customers like Vattenfall Europe, Deutsche Bahn AG, Airbus Industries Europe AG, Siemens AG (and many more)"
+    - text: "We work with many well known customers, some of which are Vattenfall Europe, Deutsche Bahn AG, Airbus Industries Europe AG, Siemens AG (and many more)"
+
+  utter_Diversity_at_dornier:
+    - text: "As a modern group of companies, we value diversity and welcome applicants (m/f/d) - regardless of age, gender, cultural, social or ethnic origin, religion or belief"
+    - text: "As a modern group of companies, we value diversity and thus we welcome applicants (m/f/d) - regardless of their age, gender, cultural, social or ethnic origin, religion or belief"
+    - text: "As we are a modern group of companies, we value diversity and thus welcome applicants (m/f/d) - regardless of their age, gender, cultural, social or ethnic origin, religion or belief"
+    - text: "We are a modern group of companies, we value diversity and thus welcome applicants (m/f/d) - regardless of their age, gender, cultural, social or ethnic origin, religion or belief"
+
+  utter_Company_car:
+    - text: "This varies depending the employment and the contract"
+    - text: "This totally depends on the employment and the contract of the employee"
+    - text: "This depends on the employment and the contract of the employee"
+    - text: "this varies as per the employment and the contract of the employee"
+
+  utter_Parking_facilities:
+    - text: "Depending on the location, you can park your car in paid parking spaces in front of the office"
+    - text: "Depending on the office location, but you can always park your car in paid parking spaces in front of the office"
+    - text: "It depends on the office location, but you can always park your car in paid  parking spaces in front of the office"
+
+  utter_Documents_needed:
+    - text: "We would need the following documents : \n
+              \n
+              a.Proof of income tax deduction characteristics (tax ID, income tax class, child allowances, etc.) \n
+              \n
+              b. Certificate from the health insurance company (not older than 3 months) \n
+              \n
+              c. Copy of social security card \n
+              \n
+              d. Copy of identity card, e. current certificate of enrolment \n
+              \n
+              f. current picture"
+    - text: "We would need the following documents from you to process your application: \n
+              \n
+              a.Proof of income tax deduction characteristics (tax ID, income tax class, child allowances, etc.) \n
+              \n
+              b. Certificate from the health insurance company (not older than 3 months) \n
+              \n
+              c. Copy of social security card \n
+              \n
+              d. Copy of identity card \n
+              \n
+              e. current certificate of enrolment \n
+              \n
+              f. current picture"
+    - text: "The following documents would be needed : \n
+              \n
+              a.Proof of income tax deduction characteristics (tax ID, income tax class, child allowances, etc.) \n
+              \n
+              b. Certificate from the health insurance company (not older than 3 months) \n
+              \n
+              c. Copy of social security card, d. Copy of identity card \n
+              \n
+              e. current certificate of enrolment \n
+              \n
+              f. current picture"
+    - text: "The following documents would be needed for your application: \n
+              \n
+              a.Proof of income tax deduction characteristics (tax ID, income tax class, child allowances, etc.) \n
+              \n
+              b. Certificate from the health insurance company (not older than 3 months) \n
+              \n
+              c. Copy of social security card \n
+              \n
+              d. Copy of identity card \n
+              \n
+              e. current certificate of enrolment \n
+              \n
+              f. current picture"
+
+  utter_Probationary_period:
+    - text: "Our probationary period is six months"
+    - text: "The probationary period at the company is 6 months"
+    - text: "Probationary period at the firm is 6 months"
+    - text: "Probationary period at the Dornier group is 6 months"
+
+  utter_working_hours:
+    - text: "This varies depending the employment and the contract"
+    - text: "This totally depends on the employment and the contract of the employee"
+    - text: "This depends on the employment and the contract of the employee"
+    - text: "this varies as per the employment and the contract of the employee"
+
+  utter_Unsolicited_application:
+    - text: "We are happy to welcome you to our applicant pool. Simply send your application to jobs@dornier-group.com"
+    - text: "We would be happy to receive your application, to do so just send your application to jobs@dornier-group.com"
+    - text: "Yes, you could send your unsolicited application. Simply send your application to jobs@dornier-group.com"
+    - text: "Yes, you could send your unsolicited application, to do so just send your application to jobs@dornier-group.com"
+
+  utter_Internship:
+    - text: "You're welcome. Simply send your application to jobs@dornier-group.com"
+    - text: "Yes, it is possible. Please send your application to jobs@dornier-group.com"
+    - text: "Yes, you could. Please send your application to jobs@dornier-group.com"
+    - text: "It is possible to do an intership, to do so please send your application to jobs@dornier-group.com"
+
+  utter_Bachelor_Master_thesis:
+    - text: "Yes, this is possible. Please address your request directly to jobs@dornier-group.com"
+    - text: "Yes, you could write your Bachelor/Master thesis with at the Dornier group, to do so please address your request to jobs@dornier-group.com"
+    - text: "Yes, you can write your Bachelor/Master thesis with us, to do so please address your request to jobs@dornier-group.com"
+    - text: "Yes, you can write your Bachelor/Master thesis with us, please send your application to jobs@dornier-group.com"
+
+  utter_Abroad_work:
+    - text: "This can happen depending on the project. You can find out more about this in the interview"
+    - text: "Yes, it could happen depending on the project. You can find out more about this in the interview"
+    - text: "Yes, but it would depend on the project. You can find more details about this in the interview "
+
+  utter_External_event:
+    - text: "Yes, but it would be subject to the written permission of your manager and would only be possible within the framework of the applicable compliance and pandemic guidelines"
+    - text: "Yes, you can but you would need a prior written permission from your manager, and would only be possible within the framework of the applicable compliance and pandemic guidelines"
+    - text: "Yes, but you would require a prior permission of your manager and would only be possible if it is within the framework of the applicable complaince and pandemic guidelines "
+
+
+  utter_Inhouse_projects:
+    - text: "This depends entirely on your activity and you can find out more about this in the interview. In principle, however, we welcome new ideas / inventions"
+    - text: "Yes, you can. This would depend on your activity and more details can be found out in the interview. Our primary focus is on welcoming new ideas/ inventions"
+    - text: "Yes, you surely can. This would entirely depend on the activity assigned to you and more details can be found out in the interview. But, we surely welcome new ideas/ inventions"
+    - text: "This would totally depend on the activity assigned to you, and more details can be discussed in the interview. But, we surely welcome new ideas/ inventions"
+
+
+  utter_Career_advancement_promotion:
+    - text: "We are interested in the continuous development of our employees and support you accordingly where we can"
+    - text: "Yes, we do believe in the continuous development of our employees and we would support you accordingly where we can"
+    - text: "Yes, we are interested in the continuous development of our employees and we support them wherever we can"
+    - text: "We believe in the continuous development of our employees and we support them wherever we can"
+
+
+  utter_Working_student:
+    - text: "Yes, this is possible with appropriate performance and personnel vacancies"
+    - text: "Yes, you could be recruited as an working student based on your performance and the vacanies available"
+    - text: "Yes, there are chances of your recruitment based on your performance and the vacancies available"
+    - text: "Yes, this is possible based on your performance and the vacanices available in the firm "
+
+
+  utter_Internal_job_change:
+    - text: "Of course, you are also free to apply for our vacant positions. Please feel free to contact your manager"
+    - text: "Of course, you can apply to different departments within the company, if any vacancies are present. Please feel free to contact your manager"
+    - text: "yes, you are free to apply for the different vacant positions within the company. Please feel free to contact your manager"
+    - text: "yes, you can apply for the different vacant positions within the company, please feel free to contact your manager "
+
+  utter_Travel_expense_interview:
+    - text: "Yes, we will refund train tickets for second class as well as a flat rate for your fuel costs"
+    - text: "Yes, we would reimburse for the train tickets for second class as well as the flat rate for your fuel costs"
+    - text: "We would reimburse for the train tickets for second class, as well as the flat rate for your fuel costs"
+    - text: "We would reimburse you for the cost of train tickets for second class, as well as the flat rate for your fuel costs "
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  utter_greet:
+    - text: "Hey!" 
+    - text: "Hello! How can I help you?"
+
+  utter_ask_name_form_first_name:
+    - text: What is your first name?
+
+  utter_ask_name_form_last_name:
+    - text: What is your last name?
+
+  utter_ask_name_form_email_address:
+    - text: What is your Email address?
+
+  utter_ask_name_spelled_correctly:
+    - buttons:
+      - payload: /affirm_name
+        title: Yes, everything is correct
+      - payload: /deny_name
+        title: No, I want to change some fields
+      text: "Are the following details correct?  \n
+            \n
+            1. First Name = {first_name}  \n
+            \n
+            2. Last Name = {last_name}  \n
+            \n
+            3. Email ID = {email_address}" 
+
+  utter_ask_clear_params_name:
+    - buttons:
+      - payload: /clear_first_name
+        title: First Name
+      - payload: /clear_last_name
+        title: Last Name
+      - payload: /clear_email_address
+        title: Email ID
+      # - payload: /clear_all_name
+      #   title: All parameters
+      text: 'Please select the parameter which needs to be cleared :'
+
+  utter_submit:
+    - text: Ok. Thanks!
+
+  utter_remember:
+    - text: I will remember that your name is {first_name} {last_name} and email address is {email_address}!
+
+  utter_ask_job_form_job_type:
+    - buttons:
+      - payload: /working_student
+        title: Working student 
+      - payload: /intern
+        title: Intern
+      - payload: /permanent
+        title: Permanent 
+      text: Please select the type of job you want to search 
+
+  utter_ask_job_form_job_domain:
+    - buttons:
+      - payload: /administrative_and_clerical
+        title: Administrative and clerical positions
+      - payload: /installation_and_maintenance_repair
+        title: Installation and maintenance repair services 
+      - payload: /engineering
+        title: Engineering 
+      - payload: /sales_and_business_development
+        title: Sales and Business development positions 
+      - payload: /it_software
+        title: IT software
+      - payload: /business_and_strategic_development
+        title: Business and Strategic development positions 
+      text: Which job domain are you interested in? 
+
+  utter_ask_job_form_job_keywords:
+    - text: Please enter the search term for your job search ( for e.g - Machine Learning, Finance, etc)
+
+  utter_ask_job_form_confirmation_search:
+    - buttons:
+      - payload: /affirm_job
+        title: Yes
+      - payload: /deny_job
+        title: No
+      text: "Do you want to search for existing vacancies with the following parameters -  \n
+            \n 
+            1. job Type = {job_type}  \n
+            \n 
+            2. Job domain = {job_domain}  \n 
+            \n
+            3. Search Keyword = {job_keywords}"
+
+  utter_ask_job_form_clear_params:
+    - buttons:
+      - payload: /affirm_clear_params
+        title: Yes, I want to change some parameters
+      - payload: /deny_clear_params
+        title: No, Continue with the Job search
+      text: "Do you want to change any of the existing parameters before proceeding with the search-  \n
+            \n 
+            1. job Type = {job_type}  \n
+            \n
+            2. Job domain = {job_domain}  \n 
+            \n
+            3. Search Keyword = {job_keywords}"
+
+  utter_ask_clear_params_job:
+    - buttons:
+      - payload: /clear_job_type
+        title: job Type
+      - payload: /clear_job_domain
+        title: Job domain
+      - payload: /clear_job_keywords
+        title: Search Keyword
+      # - payload: /clear_all
+      #   title: All parameters
+      text: 'Please select the parameter which needs to be cleared :'
+
+  utter_submit_job_form:
+    - text: Thanks for the information!
+
+  utter_remember_job:
+    - text: Searching for a job with the above parameters
+  
+  utter_job_results:
+    - text: "https://dornier-group.jobs.personio.com/job/{id}"
+
+  utter_help:
+    - buttons: 
+      - payload: /Current_job_openings
+        title: Current Job Openings
+      - payload: /benefits
+        title: Information about benefits
+      - payload: /info_abt_interview
+        title: Information about interview process
+      text:  "The following actions are possible for me -  \n
+            \n
+            1. Help find a open job  \n
+            \n
+            2. Provide information about the company (Benefits, Business units of the company, headquarters, etc)  \n
+            \n
+            3. Information about the interview process"
+
+  utter_start_bot:
+    - buttons: 
+      - payload: /greet
+        title: Hey !
+      text:  "Hi, I'm  a chatbot assistant for helping you related to your job queries,  \n
+            \n
+            The following actions are possible for me -  \n
+            1. Help find a open job  \n
+            2. Provide information about the company (Benefits, Business units of the company, headquarters, etc)  \n
+            3. Information about the interview process  \n
+            \n
+            Type '/help' or 'Help me' to find all the possible actions  \n
+            \n
+            Click on the below button to get started !  \n"
+              
+  utter_benefits:
+    - buttons: 
+      - payload: /About_Dornier
+        title: About the company
+      - payload: /Dornier_Business
+        title: Business Sectors of Dornier
+      - payload: /Dornier_Locations
+        title: Locations present
+      - payload: /Probationary_period
+        title: Probationary Period
+      - payload: /Medical_facilities
+        title: Medical Facilities
+      - payload: /Promoting_strengths_talents
+        title: Promotion of strengths and talents
+      - payload: /Job_ticket
+        title: Job tickets
+      - payload: /Company_pension_scheme
+        title: Company Pension scheme
+      - payload: /Christmas_bonus
+        title: Christmas Bonus
+      - payload: /Work_from_home
+        title: Work from home policy
+      - payload: /Benefits_provided
+        title: Benefits provided
+      - payload: /Notice_period
+        title: Notice Period
+      - payload: /Abroad_assignment
+        title: Abroad work
+      - payload: /Company_car
+        title: Company car
+      - payload: /Career_advancement_promotion
+        title: Career Advancement and Promotion 
+      - payload: /Travel_expense_interview
+        title: Reimbursement for travel expenses occured
+      text:  The following information is available 
+
+  utter_info_abt_interview:
+    - buttons: 
+      - payload: /Response_timeline
+        title: Response Timeline
+      - payload: /Application_process
+        title: Information about application process
+      - payload: /Interview_process
+        title: Information about Interview process
+      - payload: /Documents_needed
+        title: Information about Documents needed
+      - payload: /Internship
+        title: Information about Internships
+      text:  The following information is available  
+
+
+  utter_provide_rating:
+    - buttons: 
+      - payload: /rating_1
+        title: 😄
+      - payload: /rating_2
+        title: 🙂
+      - payload: /rating_3
+        title: 🙁
+      - payload: /rating_4
+        title: ☹️
+      text:  Please rate your experience with the chatbot
+
+  # utter_provide_feedback:
+  #   - text:  I'm so Sorry for the inconvience !! please help me with a feedback about what can be improved. 
+
+  utter_respond_rating:
+    - text:  Thanks a lot for the rating !!
+
+  # utter_respond_feedback:
+  #   - text:  Thanks for the feedback !!
+
+actions:
+- action_default_ask_affirmation
+- action_default_fallback
+- validate_name_form
+- validate_job_form
+- action_get_job_search_confirmation
+- action_ask_job_search_confirmation
+- action_job_results
+- action_job_params_clear
+- action_ask_job_params_clear
+- action_ask_name_correct
+- action_name_params_clear
+- action_save_conversation
+
+# - utter_greet
+# - utter_remember
+# - utter_submit
+
+forms:
+  name_form:
+    required_slots:
+        - first_name
+        - last_name
+        - email_address
+
+  job_form:
+    required_slots:
+        - job_type 
+        - job_domain
+        - job_keywords
+
+  # feedback_form:
+  #   required_slots:
+  #       - rating      
+        # - job_form_confirmation_search
+
+
+#   restaurant_form:
+#     ignored_intents:
+#     - chitchat
+#     required_slots:
+#       - cuisine
+#       - num_people
+#       - outdoor_seating
+#       - preferences
+#       - feedback
+

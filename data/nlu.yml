@@ -1,0 +1,1039 @@
+version: "3.1"
+nlu:
+  - intent: i_am_a_bot
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+      - Who are you?
+      - Who am I talking to?
+
+  - intent: out_of_scope
+    examples: |
+      - Can I order pizza?
+      - Tell me a joke
+      - Apply for my job
+      - What is my salary?
+      - Help me with my internet
+      - Help me with my homework
+      - complete my assignment
+      - I want to order food
+      - What is 2 + 2?
+      - Who's the US President?  
+      - Which car do you drive?
+      - Can you drive a car?
+      - Can you fly a car?
+      - Does your company help me in my assignment?
+      - Can you give me a breakup for my salary?
+      - Would you give me breaks as rewards?
+      - Does your company provide movie tickets?
+      - Will get any christmas gift?
+      - Do you give holidays in christmas?
+      - Can I have a leave on christmas?   
+
+  - intent: User_details_first_name
+    examples: |
+      - [Jon](first_name)
+      - [devang](first_name)
+      - [rohit](first_name)
+      - [Dhaval](first_name)
+      - [Vivek](first_name)
+      - [Akshat](first_name)
+      - [Deep](first_name)
+      - [Robert](first_name)
+      - [Harvey](first_name)
+      - [loius](first_name)
+      - My first name is [Rohit](first_name) 
+      - I'm called [Hardy](first_name)
+      - Please call me [laura](first_name)
+      - My first name is [cynthia](first_name)
+      - [Virat](first_name)
+      - My name is [James](first_name)
+      - I'm called [John](first_name)
+      - My name is [my](first_name)
+      - My name is [Name](first_name)
+      - I'm called [My](first_name)
+      - I'm called [name](first_name)
+      - [Jay](first_name)
+      - [Rohit](first_name)
+      - [abhinav](first_name)
+      - [mohit](first_name)
+      - [Ethan](first_name)
+      - Please call me [jonny](first_name)
+      - I'm [robert](first_name)
+      - I'm called [Lois](first_name)
+
+  - intent: User_details_last_name
+    examples: |
+      - [Ranjane](last_name)
+      - [Antala](last_name)
+      - [shah](last_name)
+      - [Patel](last_name)
+      - [Wittmann](last_name)
+      - [Sadhu](last_name)
+      - [Parakhiya](last_name)
+      - [Zane](last_name)
+      - [specter](last_name)
+      - [litt](last_name)
+      - It is [Ranjane](last_name)
+      - I'm called [Hilliges](last_name)
+      - Please call me [Juergen Wittmann](last_name)
+      - My Last name is [Bales](last_name)
+      - [Kohli](last_name)
+      - Its [stark](last_name)
+      - [Jagtap](last_name)
+      - [Shahid](last_name)
+      - [Dhone](last_name)
+      - My last name is [Pearson](last_name)
+      - My last name is [jagtap](last_name)
+      - My last name is [ünal](last_name)
+
+  - intent: User_details_email_address
+    examples: |
+      - My email address is [abs@gmail.com](email_address)
+      - My email address is [peterpan12@xyz.com](email_address)
+      - My email is [ayz.abs19@yahhoo.com](email_address)
+      - My email is [rsemai.34@abc.de](email_address)
+      - My email is [tw23445@stud.th-deg.de](email_address)
+      - It is [test@test.com](email_address)
+      - Its [dt@th.df](email_address)
+      - [nkjcd.32@deg.in](email_address) 
+      - [test.test@abc.cz](email_address)
+      - [rsranjane@te.de](email_address)
+      - [rsranjane@test.com](email_address)
+
+  - intent: User_details_job_level
+    examples: |
+      - I'm a [student](job_level)
+      - I've [recently graduated](job_level) from the university
+      - I have [30 years of experience](job_level) as an engineer
+      - I'm an engineer having [5 years of experience](job_level)
+      - HR with [13 years of exp](job_level)
+      - accountant with 10 [years of experience](job_level)
+
+  - intent: User_details_job_domain
+    examples: |
+      - I'm a student with interest in [Artificial Intelligence](job_domain)
+      - I've recently graduated from the university, I like [Data Analytics](job_domain)
+      - I have 30 years of experience as an [Project Manager](job_domain)
+      - I'm an engineer having 5 years of experience in [Machine learning](job_domain)
+      - [HR](job_domain) with 2 years of work ex
+      - [accountant](job_domain) with 10 years of experience
+      - Love to work in [Finance](job_domain)
+      - I like working in [Admin department](job_domain)
+      - I could do [programming](job_domain)
+      - I work in the [IT field](job_domain)
+      - I want to contribute to the [quality department](job_domain)
+      - [Finance management](job_domain)
+      - [Industrial Law](job_domain)
+      - [Production](job_domain)
+      - [Wind Energy](job_domain)
+
+  - intent: User_details_years_experience
+    examples: |
+      - I have [30 years](years_experience) of experience as an engineer
+      - I'm an engineer having [5 years](years_experience) of experience
+      - HR with [10 years](years_experience) of exp
+      - Accountant with [10 years](years_experience) of experience
+      - [10 years](years_experience)
+      - [5 yrs](years_experience)
+      - [6](years_experience) 
+      - [9 years](years_experience)
+      - I worked for [25 years](years_experience)
+
+  # - lookup: first_name
+  #   data/first_name.txt
+
+  # - lookup: last_name
+  #   data/last_name.txt
+
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+      - vincent
+      - vincent-mcvincent
+
+  - intent: End_chat
+    examples: |
+      - Thanks, I'm done
+      - Please close chat
+      - Thanks for help
+      - Thank you for helping
+      - I'm done thank you
+      - Close chat
+      - End chat
+      - I want to end chat
+      - My question is answered
+      - Bye bye
+      - Ciao
+
+  - intent: help
+    examples: |
+      - What can you do?
+      - What actions are possible by you?
+      - How can you help me?
+      - Tell me about your skills
+
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - good morning
+      - good evening
+      - hey there
+      - howdy
+      - sup 
+      - how goes it
+      - whats up?
+
+  - intent: About_Dornier
+    examples: |
+      - Who is dornier group? 
+      - What is dornier group?
+      - What does dornier group do?
+      - What does this company do?
+      - What does this firm do?
+      - Tell me about this company
+      - What does your company do?
+      - What does your firm do?
+
+  - intent: Dornier_Business
+    examples: |
+      - how many [business units](Business_units) does dornier group have?
+      - Number of [business units](Business_units) of dornier group?
+      - which are the [business units](Business_units) of dornier?
+      - In which [sectors](Business_units) does dornier group does its business?
+      - In which [sectors](Business_units) does dornier group work?
+      - what are the [sectors](Business_units) in which dornier group does its business?
+      - which are the [fields](Business_units) in which dornier group does its business?
+      - which are the [sectors](Business_units) in which dornier group does its business?
+      - In which [fields](Business_units) do you do your business?
+      - In which [domains](Business_units) do you work?
+
+  - intent: Dornier_Locations
+    examples: |
+      - How many [countries](Locations) does dornier group provide its services?
+      - In how many [countries](Locations) does Dornier group operate from?
+      - Number of [locations](Locations) where dornier group provides its services?
+      - Number of [locations](Locations) where dornier group operates?
+      - Which [nations](Locations) do your employees come from?
+      - In which [nations](Locations) is the dornier group located?
+      - In which [nations](Locations) is the dornier group situated?
+      - In which [nations](Locations) does the dornier group has its presence?
+      - Where are you [situated](Locations)?
+      - Where are you [located](Locations)?
+      - in which countries are you [situated](Locations)?
+      - In which countries are your [located](Locations)?
+      - How many countries do you work?
+      - Which [countries do you work](Locations)?
+
+  - intent: Dornier_Headquarters
+    examples: |
+      - In which country is dornier group [headquartered](Headquarters)?
+      - Where is the [headquarter](Headquarters) of Dornier?
+      - Where is Dornier group [Headquartered](Headquarters)?
+      - Where is the [headquarter](Headquarters) of Dornier Located?
+      - in which country is the [Headquarter](Headquarters) of Dornier group located?
+      - What is the name of the country where [headquarter](Headquarters) of Dornier group is located?
+      - Where are [your headquarters](Headquarters)?
+      - your [headquarters](Headquarters)?
+      - where is [your headquarter](Headquarters)?
+      - Where are [you headquartered](Headquarters)?
+
+  - intent: Dornier_Workforce
+    examples: |
+      - How many [people work](Workforce) at dornier group?
+      - [Number of people working](Workforce) at dornier group?
+      - In total how [many people work](Workforce) at Dornier group?
+      - [How many people work](Workforce) at dornier?
+      - what is the [headcount](Workforce) for the people working at Dornier group?
+      - How [many people](Workforce) work with you?
+      - [Total number of people](Workforce) working with you? 
+
+  - intent: Dornier_Projects
+    examples: |
+      - How many [number of projects](Projects) are completed each year world wide at Dornier group?
+      - [Number of projects](Projects) which are completed each year at Dornier group?
+      - what is the [count of the projects](Projects) completed each year world wide at dornier group?
+      - how [many projects](Projects) do you complete?
+      - How [many projects](Projects) do you work on?
+      - [Number of projects](Projects) do you work on?
+      - [Number of projects](Projects) completed each year?
+
+  - intent: Business_sector_emobility
+    examples: |
+      - What are the steps taken by dornier group towards [e-mobility](Emobility)?
+      - What are the steps taken by dornier group towards [electric mobility](Emobility)?
+      - What are the steps taken by dornier group towards [sustainable urban mobility](Emobility)?
+      - What are the steps taken by dornier group twards the [emerging mobility concepts](Emobility)?
+      - Are any steps taken by Dornier group towards [e-mobility](Emobility)?
+      - Are any steps taken by Dornier group towards [electric mobility](Emobility)?
+      - Are any steps taken by Dornier group towards [sustainable urban mobility](Emobility)?
+      - Are any steps taken by Dornier group towards [emerging mobility concepts](Emobility)?
+      - Is dornier group working on [e-mobility](Emobility)?
+      - Is dornier group working on [electric mobility](Emobility)?
+      - Is dornier group working on [sustainable urban mobility](Emobility)?
+      - Is dornier group working on [emerging mobility concepts](Emobility)?
+      - Is dornier group working on [e-mobility](Emobility)?
+      - Do you [work in emobility](Emobility)?
+      - do you [contribute to electric mobility](Emobility)?
+      - [Emobility](Emobility)?
+      - [Electric mobility](Emobility)?
+      - [Sustainable urban mobility](Emobility)?
+      - [emerging mobility concepts](Emobility)?
+      - [future of mobility](Emobility)?
+      - Do you [work for the future of mobility](Emobility)?
+      - are you [working in emobility](Emobility)?
+      - You have [business in emobility](Emobility)?
+      - You do [business in emobility](Emobility)?
+      - Do you have [business in emobility](Emobility) also?
+      
+
+  - intent: Business_sector_nuclear
+    examples: |
+      - Does dornier group work in the [nuclear sector](Nuclear)?
+      - Does dornier group provide its service in the [nuclear sector](Nuclear)?
+      - Does the dornier group also work in [nuclear sector](Nuclear)?
+      - what are the services provided by dornier group in [nuclear sector](Nuclear)?
+      - which services are provided by dornier group in [nuclear sector](Nuclear)?
+      - How many services are provided by the dornier group in [nuclear sector](Nuclear)?
+      - services provided by dornier group in [nuclear](Nuclear) sector?
+      - How does dornier group contribute to the [nuclear](Nuclear) sector?
+      - which are the services provided by the dornier group in the [nuclear](Nuclear) sector?
+      - Do you [work in Nuclear sector](Nuclear)?
+      - You [work in the Nuclear sector](Nuclear)?
+      - You have [business in the Nuclear sector](Nuclear)?
+      - You do [business in the nuclear sector](Nuclear)?
+      - Have you [worked in the nuclear sector](Nuclear)?
+
+  - intent: Business_sector_water
+    examples: |
+      - Does dornier group work in [water sector](Water)?
+      - What services are provided by the dornier group in the [water sector](Water)?
+      - what are the services provided by the dornier group in the [water sector](Water)?
+      - which services are provided by the dornier group in the [water sector](Water)?
+      - which are the services provided by the dornier group in the [water sector](Water)?
+      - Services provided by the dornier group in the [water](Water) sector?
+      - What [business do you do in the water sector](Water)?
+      - you have [business in the water sector](Water)?
+      - Have you [worked in the water sector](Water)?
+      - You do [business in the water sector](Water)?
+
+
+  - intent: Business_sector_aviation
+    examples: |
+      - Is dornier group working in the [aviation sector](Aviation)?
+      - How does dornier group work in the [aviation](Aviation) sector?
+      - Does dornier also [work in the aviation](Aviation) sector? 
+      - How is Dornier group working in the [aviation sector](Aviation)?
+      - How is dornier group [contributing to the aviation](Aviation) sector?
+      - Is dornier group contributing to the [aviation](Aviation) sector?
+      - You [work in aviation](Aviation)?
+      - You do [business in aviation](Aviation)?
+      - You have [business in aviation](Aviation)?
+      - How do [you do business in aviation](Aviation)?
+      - you [work in the aviation field](Aviation)?
+      - you do [business in the aviation field](Aviation)?
+
+  - intent: Business_sector_power
+    examples: |
+      - How does dornier group work in the [power sector](Power)?
+      - Does dornier group work in the [power](Power) sector?
+      - Does the dornier group customise [renewable energy plants](Power) as per the need of the customer?
+      - Can the dornier group provide tailored [solutions for renewable energy](Power) projects to its customers? 
+      - Does the dornier group provide tailored solutions for [renewable energy projects](Power) to its customers?
+      - Can the dornier group provide customised [solutions for renewable energy projecs](Power) to its customers?
+      - What services are provided by the dornier group in the [renewable energy](Power) sector?
+      - Services provided by dornier group in [renewable energy sector](Power)?
+      - Which services are provided by dornier group in [renewable energy](Power) sector?
+      - Does the dornier group provide its service in the renewable [energy sector](Power)?
+      - The dornier group provides its [services in the renewable energy](Power) sector?
+      - What are the services provided by dornier group in [renewable energy sector](Power)?
+      - which are the services provided by the dornier group in [renewable energy sector](Power)?
+      - Does dornier group provide its [service in the renewable energy](Power) sector?
+      - You do [business in the power sector](Power)?
+      - You have [business in the power sector](Power)?
+      - Do you [work in the power sector](Power)?
+      - You have [business in the power domain](Power)?
+
+  - intent: Workplace_gender_equality
+    examples: |
+      - Is [gender equality](Gender_equality) taken care of at dornier group?
+      - Does dornier group care about [gender equality](Gender_equality)?
+      - Does the dornier group [care about gender equality](Gender_equality)?
+      - Are any actions taken by dornier group about [gender equality](Gender_equality)?
+      - Is dornier group taking any actions about [gender equality](Gender_equality)?
+      - Is the dornier group active in taking actions about [gender equality](Gender_equality)?
+      - Are any measures taken by dornier group about [gender equality](Gender_equality)?
+      - Is dornier group taking any measures about [gender equality](Gender_equality)?
+      - Are any steps taken by dornier group to [maintain gender equality](Gender_equality)?
+      - How do [you maintain gender equality](Gender_equality)?
+      - Do you [take care of gender equality](Gender_equality)?
+      - is [gender equality taken care of](Gender_equality)?
+      - What [actions do you take to maintain gender equality](Gender_equality)?
+      - what about the [gender equality](Gender_equality)?
+
+  - intent: Workplace_policy
+    examples: |
+      - What is the [workplace policy](Workplace_policy) at the dornier group?
+      - [Workplace policy](Workplace_policy) at the dornier group?
+      - is there any [workplace policy](Workplace_policy) at the dornier group?
+      - What is [your workplace policy](Workplace_policy)?
+      - how about your [workplace policy](Workplace_policy)?
+      - do [you have any workplace policy](Workplace_policy)?
+      - [Workplace policy at your company](Workplace_policy)?
+      - You have any [workplace policy at the company](Workplace_policy)?
+      - Tell me about your [workplace policy](Workplace_policy)
+
+  - intent: Working_ergonomics
+    examples: |
+      - What are the [working ergonomics](Working_ergonomics) of the dornier group?
+      - [Working ergonomics](Working_ergonomics) of the dornier group?
+      - How are the [working ergonomics](Working_ergonomics) of the dornier group?
+      - how are [your working ergonomics](Working_ergonomics)?
+      - What about [your working ergonomics](Working_ergonomics)?
+      - what are [the working ergonomics](Working_ergonomics)?
+      - [working ergonomics of this firm](Working_ergonomics)?
+      - [working ergonomics of this company](Working_ergonomics)?
+      - [your working ergonomics](Working_ergonomics)?
+
+  - intent: Breaks
+    examples: |
+      - how many [breaks](Breaks) are provided to the employees?
+      - Are any [breaks provided](Breaks) to the employees?
+      - what is the [number of breaks](Breaks) provided to the employees?
+      - number of [breaks an employee can take](Breaks)?
+      - How many [breaks](Breaks) can be taken by an employee?
+      - [total number of breaks](Breaks) taken by an employee?
+      - Can employees have [breaks at the dornier group](Breaks)?
+      - Number of [breaks entitled to an employee](Breaks) at the dornier group?
+      - [Total number of breaks](Breaks) entitled to an employee at the dornier group?
+      - how many [breaks are provided to the employees](Breaks) at the dornier group?
+      - How many [breaks can I take](Breaks)?
+      - [breaks can I take](Breaks)?
+      - How many [breaks can I take](Breaks)?
+      - Number of [breaks I can take](Breaks)?
+      - How many [breaks can I take in a day](Breaks)?
+      - Number of [breaks entitled] to me(Breaks)?
+      - How many [breaks are entitled to me](Breaks)?
+      - Can I [take breaks in between work](Breaks)?
+      - tell me [about the breaks](Breaks)
+
+  - intent: Nonsmoker_policy
+    examples: |
+      - What is the [non-smoker policy](Nonsmoker) at the dornier group?
+      - how are [non-smokers protected](Nonsmoker) at the dornier group?
+      - are [non-smokers](Nonsmoker) protected at the dornier group?
+      - What measures are taken to [protect the non-smokers](Nonsmoker) at the dornier group?
+      - What actions are taken to protect the [nonsmokers](Nonsmoker) at the dornier group?
+      - What steps are taken to protect the [non-smokers at the dornier group](Nonsmoker)?
+      - how is the [non-smoker protection](Nonsmoker) at the dornier group?
+      - how does the dornier group [take care of the non-smokers](Nonsmoker)?
+      - are any steps taken by dornier group to [protect non-smokers](Nonsmoker)?
+      - [I'm a nonsmoker](Nonsmoker)
+      - [I don't smoke](Nonsmoker), how am i protected?
+      - [I do not smoke](Nonsmoker), how do you take care for me?
+      - How do you [secure nonsmokers](Nonsmoker)?
+      - How do you [secure people who do not smoke](Nonsmoker)?
+      - How do you [protect people who do not smoke](Nonsmoker)?
+      - How do you [take care of people who do not smoke](Nonsmoker)?
+      - how do you [take care of nonsmokers](Nonsmoker)?
+      - Do you [take care of people who do not smoke](Nonsmoker)?
+      - Do you [take care of nonsmokers](Nonsmoker)?
+
+  - intent: Medical_facilities
+    examples: |
+      - Are there any [medical facilities for employees](Medical_facilities) at the dornier group?
+      - how are [medical facilities](Medical_facilities) taken care at the dornier group?
+      - do you [provide any medical facilities](Medical_facilities)?
+      - Are any [medical facilities provided](Medical_facilities)?
+      - Do you [take care of medical facilities](Medical_facilities)?
+      - Do you [ensure enough medical facilities](Medical_facilities)?
+      - are there any [medical facilities at the company](Medical_facilities)?
+      - Tell me about the [medical facilities](Medical_facilities) at the company
+
+  - intent: Ideal_employee
+    examples: |
+      - what distinguishes your [best employees](Ideal_employee)?
+      - how are your [best employees distinguished](Ideal_employee)?
+      - how do you [distinguish your best employees](Ideal_employee)?
+      - what [distinguishes your employees](Ideal_employee)?
+      - how are your [employees distinguished](Ideal_employee)?
+      - how do you [distinguish your employees](Ideal_employee)?
+
+  - intent: Leadership_style
+    examples: |
+      - How would you describe the [leadership style](Leadership)?
+      - how is the [leadership style at the dornier](Leadership) group?
+      - how is the [leadership style](Leadership) at this company?
+      - how is the [leadership style](Leadership) at this firm?
+      - How is [your leadership style](Leadership)?
+      - [Your leadership style](Leadership)?
+      - Tell me about [your leadership style](Leadership)
+      - How is the [leadership at the company](Leadership)?
+      - Tell me about the [leadership at the company](Leadership)
+
+  - intent: Corporate_culture
+    examples: |
+      - How would you [describe your corporate culture](Corporate_culture)?
+      - How is the [corporate culture](Corporate_culture) at the Dornier group?
+      - How is the [corporate culture](Corporate_culture) at the company?
+      - How is the [corporate culture](Corporate_culture) at the firm?
+      - How is [your corporate culture](Corporate_culture)?
+      - How about [your corporate culture](Corporate_culture)?
+      - Tell me about [your corporate culture](Corporate_culture)
+      - How is [your corporate culture](Corporate_culture)?
+      - [Corporate culture](Corporate_culture)
+      - How is your [corporate culture at the company](Corporate_culture)?
+
+  - intent: Performance_evaluation
+    examples: |
+      - How do you [measure and evaluate performance](Performance_evaluation)?
+      - How is the [performance evaluated](Performance_evaluation) or measured?
+      - How do you [evaluate performace](Performance_evaluation)?
+      - How would you [measure my performance](Performance_evaluation)?
+      - How do you [evaluate an employee](Performance_evaluation)?
+      - How would you [measure my performance](Performance_evaluation)?
+
+
+  - intent: Promoting_strengths_talents
+    examples: |
+      - How do you [promote talents and strengths](Promoting_strengths)?
+      - How are [talents and strengths promoted](Promoting_strengths) at the dornier group?
+      - How are [talents and strengths](Promoting_strengths) promoted at the company?
+      - How do you [promote talents and strengths](Promoting_strengths) within the firm?
+      - Do you [promote talents of the employees](Promoting_strengths)?
+      - How do you [promote the strengths of the employees](Promoting_strengths)?
+      - How are you working on [promoting the strengths of the employees](Promoting_strengths)?
+      - How would you [promote my talents](Promoting_strengths)?
+
+  - intent: Response_timeline
+    examples: |
+      - When can I [expect your decision](Request_timeline)?
+      - When can I expect your [decision regarding my application](Request_timeline)?
+      - When could I get an [response regarding my application](Request_timeline)?
+      - In how many days would you [provide a response](Request_timeline)?
+      - When would you [revert me with a response for my application](Request_timeline)?
+      - When would I get a [response from you](Request_timeline)?
+      - When would you give me a [response about my application](Request_timeline)?
+      - How many [days for a response](Request_timeline)?
+      - How many [days for a response from you](Request_timeline)?
+      - When will I get a [decision regarding my application](Request_timeline)?
+      - tell me about the [response time regarding my application](Request_timeline)
+      - Time for providing a [Decision regarding my application](Request_timeline)?
+ 
+  
+  - intent: Apply_to_dornier
+    examples: |
+      - How can I [apply to you](Apply_Dornier)?
+      - How can I [apply for a job](Apply_Dornier) at this company?
+      - How can I [apply for a job at this firm](Apply_Dornier)?
+      - How do I [apply at this firm](Apply_Dornier)?
+      - How do [I apply](Apply_Dornier)?
+      - How can [I apply here](Apply_Dornier)?
+      - How do i [apply for a job](Apply_Dornier) here?
+      - How do I [apply for a job in this company](Apply_Dornier)?
+      - Tell me how do i [apply at this company](Apply_Dornier)
+
+  - intent: Application_process
+    examples: |
+      - what does the [application process look like](Application_process)?
+      - What are the [steps in the application process](Application_process)?
+      - How is the [application process](Application_process)?
+      - How does the [application process look like](Application_process)?
+      - Tell me about the [application process at this company](Application_process)
+      - How is the [application process here](Application_process)?
+      - [the application process](Application_process)?
+      - [Application process at this company](Application_process)?
+
+  - intent: Job_ticket
+    examples: |
+      - Do you pay a [job ticket](Job_ticket)?
+      - Does Dornier group [pay a job ticket](Job_ticket)?
+      - Does the [company pay a job ticket](Job_ticket)?
+      - Does the [firm pay a job ticket](Job_ticket)?
+      - Do you also [pay for a job ticket](Job_ticket)?
+      - Would I also get a [job ticket](Job_ticket)?
+      - Is a [job ticket also included](Job_ticket) with your offer?
+      - Do you also [provide a job ticket](Job_ticket)?
+      - Would you also [provide a job ticket](Job_ticket)?
+      - Do you also [give a job ticket](Job_ticket)?
+
+
+  - intent: Company_pension_scheme
+    examples: |
+      - Do you have a [company pension scheme](Company_pension)?
+      - Does Dornier group have a [company pension scheme](Company_pension)?
+      - Does your [company have a company pension scheme](Company_pension)?
+      - Does your [firm have a company pension scheme](Company_pension)?
+      - Do I get [any company pension scheme](Company_pension)?
+      - Tell me [about the company pension scheme](Company_pension)
+      - How is the [company pension scheme](Company_pension)?
+      - [Company pension scheme](Company_pension)?
+      - Is there [any company pension scheme](Company_pension)?
+      - How about the [company pension scheme](Company_pension)?
+
+  - intent: Christmas_bonus
+    examples: |
+      - Do you pay [christmas bonuses](Christmas_bonus)?
+      - Does Dornier group pay [christmas bonus](Christmas_bonus)?
+      - Does your [company pay christmas bonus](Christmas_bonus)?
+      - Does the firm [pay christmas bonus](Christmas_bonus)?
+      - Do you [give christmas bonus](Christmas_bonus)?
+      - Is there [any christmas bonus](Christmas_bonus)?
+      - Would I [get any christmas bonus](Christmas_bonus)?
+      - Do you [give out christmas bonus](Christmas_bonus)?
+      - Tell me [about the christmas bonus](Christmas_bonus)
+      - [Christmas bonus](Christmas_bonus)
+      - Does the company [pay any christmas bonus](Christmas_bonus)?
+      - Do you provide [any bonus for christmas](Christmas_bonus)?
+      - Is there any [bonus for christmas](Christmas_bonus)?
+      - Would I get [bonus in christmas](Christmas_bonus)?
+      - Do you also provide [bonus in christmas](Christmas_bonus)?
+
+  - intent: Holiday_pay
+    examples: |
+      - Do you [pay Holiday Pay](Holiday_pay)?
+      - Does Dornier group pay [Holiday Pay](Holiday_pay)?
+      - Does your [company pay Holiday pay](Holiday_pay)?
+      - Does the firm pay [Holiday pay](Holiday_pay)?
+      - Would I [get any holiday pay](Holiday_pay)?
+      - Do you provide [any pay while holidays](Holiday_pay)?
+      - Tell me [about the holiday pay](Holiday_pay)
+      - Does the company [provide pay on holidays](Holiday_pay)?
+      - Do you give [pay while on holidays](Holiday_pay)?
+      - Do you [provide holiday pay](Holiday_pay)?
+
+  - intent: Work_from_home
+    examples: |
+      - Do you [work in Hybrid mode](Work_from_home)?
+      - Does the Dornier group [support Hybrid mode](Work_from_home)?
+      - Does the company support [Hybrid mode](Work_from_home)?
+      - Can I [work from home sometimes](Work_from_home)?
+      - Is it [possible for me to work hybridly](Work_from_home)?
+      - Can I [work from home some days a week](Work_from_home)?
+      - Can I [sometimes work from home](Work_from_home)?
+      - What if I [work from home for few days a week](Work_from_home)?
+      - What if I [work from home sometimes](Work_from_home)?
+      - Possibility for [work from home](Work_from_home) sometimes? 
+      - Can I [work from home](Work_from_home)?
+      - Is it possible for me to [work from home](Work_from_home)?
+
+  - intent: Work_from_home_100
+    examples: |
+      - Can I work [100% remotely](Work_from_home_100)?
+      - Can I [work from Home everyday](Work_from_home_100)?
+      - Can I have [100% work from home](Work_from_home_100)?
+      - Is it possible to [everyday work from home](Work_from_home_100)?
+      - can I [work from home everyday](Work_from_home_100) at this company?
+      - [Everyday work from home](Work_from_home_100) possible?
+      - Possibility of [work from home everyday](Work_from_home_100)?
+      - Is there any possibility for me to [work from home everyday](Work_from_home_100)?
+
+  - intent: Benefits_provided
+    examples: |
+      - What are the [benefits provided](Benefits_provided)?
+      - what [benefits are provided](Benefits_provided) by the dornier group?
+      - What [benefits are provided by the company](Benefits_provided)?
+      - What [benefits are offered](Benefits_provided) by the company?
+      - Tell me about [my benefits](Benefits_provided)
+      - What [benefits are provided](Benefits_provided) to me?
+      - What are [my benefits](Benefits_provided)?
+      - What [benefits would I get](Benefits_provided)?
+      - What are [my perks](Benefits_provided)?
+      - What [perks do you provide](Benefits_provided)?
+      - What [perks do I get](Benefits_provided) if I join this company?
+      - [Perks for joining this company](Benefits_provided)?
+
+
+  - intent: Interview_process
+    examples: |
+      - How does an [interview work](Interview_process)?
+      - How is the [interview conducted](Interview_process)?
+      - who conducts the [interviews](Interview_process)?
+      - Whom would I be facing for [the interview](Interview_process)?
+      - Tell me [about the interview process](Interview_process)
+      - [Interview process](Interview_process)
+      - Provide some [information about the interviews](Interview_process)
+      - How are the [interviews conducted](Interview_process)?
+
+
+  - intent: Current_job_openings
+    examples: |
+      - Where can I find the current [job vacancies](Current_job_openings)?
+      - Where can I find the [current job openings](Current_job_openings)?
+      - Help me [find a job](Current_job_openings)
+      - [Finding a job](Current_job_openings)
+      - I'm [looking for a job](Current_job_openings)
+      - [open jobs](Current_job_openings)
+      - [Job vacancies](Current_job_openings)
+      - How do I [find open jobs](Current_job_openings)?
+      - Help me find [current job openings](Current_job_openings)?
+      - I want a job  
+
+  - intent: Notice_period
+    examples: |
+      - What are your [notice periods](Notice_period)?
+      - What is the [notice period](Notice_period)?
+      - How many days [notice do I need to serve](Notice_period)?
+      - Tell me about the [notice period](Notice_period)
+      - Do I need to [serve any notice](Notice_period)?
+      - Is there any [notice period](Notice_period)?
+      - Would there be any [notice for me](Notice_period)?
+      - Is it compulsory for me to [serve notice](Notice_period)?
+      - Would I [face any notice period](Notice_period)?
+      - 
+
+  - intent: Abroad_assignment
+    examples: |
+      - Are [assignments abroad](Abroad_assignment) possible?
+      - Is any [abroad assignment](Abroad_assignment) possible?
+      - Is it possible to have [any abroad assignment](Abroad_assignment)?
+      - Are any [foreign assignments](Abroad_assignment) possible?
+      - Any possibility to [work on abroad assignments](Abroad_assignment)?
+      - Can I work on any [foreign assignments](Abroad_assignment)?
+      - Possibility for me to [work on any foreign project](Abroad_assignment)? 
+
+  - intent: Customers
+    examples: |
+      - Who are [your customers](Customers)?
+      - Which [customers do you serve](Customers)?
+      - Which [customers do you have in your portfolio](Customers)?
+      - How many [customers do you serve](Customers)?
+      - Tell me about [your customers](Customers)
+      - How many [customers does your company have](Customers)?
+
+
+  - intent: Diversity_at_dornier
+    examples: |
+      - What do you do for [diversity](Diversity_at_Dornier)?
+      - What does [dornier group does for its diversity](Diversity_at_Dornier)?
+      - How is [diversity adopted](Diversity_at_Dornier) at the dornier group?
+      - How do you maintain [diversity at your company](Diversity_at_Dornier)?
+      - Tell me about [diversity at your company](Diversity_at_Dornier)
+      - How is the [diversity at the company](Diversity_at_Dornier)?
+      - [Diversity at the company](Diversity_at_Dornier)?
+      - How is [Diversity maintained at the company](Diversity_at_Dornier)?
+
+
+  - intent: Company_car
+    examples: |
+      - Will I get a [company car](Company_car)?
+      - Can I [get a company car](Company_car)?
+      - Would I be [getting a company car](Company_car)?
+      - Would you [provide me with a company car](Company_car)?
+      - Will I be [getting a company car](Company_car)?
+      - Do you [provide company car to your employees](Company_car)?
+      - Any [company car for me](Company_car)?
+      - Can you [give me a company car](Company_car)?
+
+  - intent: Parking_facilities
+    examples: |
+      - Do you have [parking facilities](Parking_facilities)?
+      - Are there [any parking facilities](Parking_facilities)?
+      - Does the [company provide parking facilities](Parking_facilities)?
+      - Where do I [park my car](Parking_facilities)?
+      - tell me about the [parking available](Parking_facilities)
+      - Tell me [where do I park my car](Parking_facilities)
+      - Where [can I park my car](Parking_facilities)?
+      - Do you have [enough parking space for my car](Parking_facilities)?
+      - Do you have [parking space](Parking_facilities)?
+      - How [about the parking space](Parking_facilities)?
+      - I [need to park my car](Parking_facilities), where can I do it?
+      - Can I have a [parking space for my car](Parking_facilities)?
+      - Would I get any [parking space for my car](Parking_facilities)?
+
+  - intent: Documents_needed
+    examples: |
+      - What kind of [documents do you need](Documents_needed) to hire?
+      - Which [documents are needed to process my application](Documents_needed)?
+      - Which [documents are needed](Documents_needed) from my side?
+      - Which [documents do I need](Documents_needed) to submit?
+      - Tell me [about the documents needed](Documents_needed)
+      - Provide me the [list of documents needed from me](Documents_needed)
+      - How many [documents are needed from me](Documents_needed)?
+      - What are [the documents needed from me](Documents_needed)?
+      - Which are the [documents I need to provide](Documents_needed)?
+      - [Documents needed from me](Documents_needed)?
+
+  - intent: Probationary_period
+    examples: |
+      - How long is [your probationary period](Probationary_period)?
+      - What is the [probationary period](Probationary_period)?
+      - What is the [probationary period at the Dornier group](Probationary_period)?
+      - What is the [probationary period](Probationary_period) at the firm?
+      - How [long is the probation](Probationary_period) here?
+      - How many [days does the probation last](Probationary_period)?
+      - tell me about the [probation period](Probationary_period)
+      - Tell me [about the probation](Probationary_period)
+      - How many [months in probation](Probationary_period)?
+      - How [long is the probation](Probationary_period) in this company?
+      - Can you tell me [how long is the probation period](Probationary_period)?
+
+  - intent: working_hours
+    examples: |
+      - What are your [working hours](Working_hours)?
+      - What are the [working hours at the company](Working_hours)?
+      - What are the [working hours at the dornier group](Working_hours)?
+      - What are the [working hours](Working_hours)?
+      - tell me about the [working hours](Working_hours)
+      - How many [working hours I need to clock](Working_hours)?
+      - How many [hours do I need to work](Working_hours)?
+      - How many [hours do I need to work at this company](Working_hours)?
+      - Any idea about the [number of hours needed to work](Working_hours)?
+      - [Hours I need to work](Working_hours)?
+
+  - intent: Unsolicited_application
+    examples: |
+      - Is it possible to [send you an unsolicited application](Unsolicited_application)?
+      - Is it possible to [send an unsolicited application](Unsolicited_application)?
+      - Can I send my [unsolicited application](Unsolicited_application)?
+      - Can I proceed with [my unsolicited application](Unsolicited_application)?
+      - Can I send my [unsolicited application to the dornier group](Unsolicited_application)?
+      - How do I apply for an [unsolicited application](Unsolicited_application)?
+      - Tell me how to [apply for unsolicited application](Unsolicited_application)
+
+  - intent: Internship
+    examples: |
+      - Is it [possible to do an internship](Internship) with you?
+      - Can I do an [internship at the dornier group](Internship)?
+      - Can I do [an internship](Internship) here?
+      - Is an [internship](Internship) possible at this firm?
+      - Is it [possible to do an internship](Internship) at this company?
+      - Can I complete [my intership](Internship)?
+      - Can I [intern here](Internship)?
+      - Is it possible for me to [intern here](Internship)?
+      - Can I be an [intern at this company](Internship)?
+
+
+  - intent: Bachelor_Master_thesis
+    examples: |
+      - Is it possible to write my [bachelor thesis](Thesis)?
+      - Can I [write my bachelor thesis at the dornier group](Thesis)?
+      - Can I [write my bachelor thesis](Thesis) here?
+      - Is it [possible to write my bachelor thesis](Thesis) at this firm?
+      - Is it possible to write my [bachelor thesis at this company](Thesis)?
+      - Is it possible to write my [Master thesis](Thesis)?
+      - Can I write my [master thesis at the dornier group](Thesis)?
+      - Can I [write my master thesis](Thesis) here?
+      - Is it [possible to write my master thesis](Thesis) at this firm?
+      - Is it possible to [write my master thesis at this company](Thesis)?
+      - Can I [work on my Master thesis](Thesis) with you?
+      - [Master Thesis](Thesis) with you?
+
+
+  - intent: Abroad_work
+    examples: |
+      - Is it possible to [work abroad](Abroad_work) as part of any professional activity
+      - Can I [work abroad as a part of any professional activity](Abroad_work)?
+      - Is it [possible for me to work abroad](Abroad_work) as a part of any professional activity?
+      - Can I go to [work in some foreign country](Abroad_work)?
+      - Can I [work in other country](Abroad_work)?
+      - Can I go to [work abroad](Abroad_work)?
+      - Possibility for [any work abroad](Abroad_work)?
+      - Is there any possibility for me to [work abroad](Abroad_work)?
+
+  - intent: External_event
+    examples: |
+      - As an employee, can I participate in [external events related to my professional activity](External_event)?
+      - As an employee, can I [participate in any external event](External_event) which is related to my professional work?
+      - Can I participate in any [external event which is related to my work](External_event)?
+      - As an employee at the dornier group, can I participate in any [external event](External_event) which is related to my work?
+      - Can I participate at any [external event](External_event)?
+      - Possibility for me to participate at any [external event](External_event)?
+      - Would it able for me to participate at any [external event](External_event)?
+
+  - intent: Inhouse_projects
+    examples: |
+      - Is it possible to start [in-house projects](Inhouse_projects) as an intern/working student/Bachelor/Master's student?
+      - Is it [possible to work on my own ideas](Inhouse_projects) while working as an intern/working student/ bachelor/ Masters student?
+      - Can I start [in-house projects as an intern/working student/bachelor/masters](Inhouse_projects) student?
+      - Can I [work on any of my ideas as an in-house project](Inhouse_projects) while working as an intern/working student/bachelor/master student?
+      - Possibility for me to [work on any inhouse project](Inhouse_projects)?
+      - Can I [work on any inhouse project](Inhouse_projects) while I'm a bachelor student?
+      - Chances for me to [work on inhouse project](Inhouse_projects) as a master thesis student?
+      - Any chance for me to [work on my own ideas](Inhouse_projects) as a working student?
+      - Is it possible for me to [work on my ideas](Inhouse_projects) as a Bachelor thesis student?
+      - Can I [work on inhouse project](Inhouse_projects) as an intern? 
+
+  - intent: Career_advancement_promotion
+    examples: |
+      - Do you have the [opportunity for career advancement](Career_advancement)?
+      - Does the company support its employees in their [promotion](Career_advancement)?
+      - Does dornier group support the employees in their [promotion](Career_advancement)?
+      - Does the company support its [employees in their career advancement](Career_advancement)?
+      - How do help your [employees grow](Career_advancement)?
+      - How do you [support your employees growth](Career_advancement)?
+      - How would you [support me in my growth](Career_advancement)?
+      - Tell me how would you [help me in my growth](Career_advancement)?
+      - What about [my career growth](Career_advancement)?
+      - Would you [help me with my career growth](Career_advancement)?
+      - Do you provide [opportunities for career growth](Career_advancement)?
+      - Can I [grow at this company](Career_advancement)?
+      - How do you [help your employees in their career growth](Career_advancement)?
+      - How do you promote your employees?
+      - What about my promotion?
+      - Do you promote your peple?
+      - What do you do about the promotion of your people?
+      - Would you promote me to a higher position?
+
+  - intent: Working_student
+    examples: |
+      - Can I be taken on as a permanent employee after the end of your [working student](Working_student) activity?
+      - Can I be hired as a [permanent employee after the end of my working student](Working_student) activity?
+      - Is it possible for me to work  as a permanent employee [after the end of my working student activity](Working_student)?
+      - Is it possible for me to get recruited as a permanent employee after the [end of my working student](Working_student) activity?
+      - Would you hire me after I [end my working student activity](Working_student)?
+      - Chances for hiring me after [my working student activity](Working_student)?
+      - Possibility for me being hired after I [finish my working student activity](Working_student)?
+      - Will you hire me after [I finish my working student activity](Working_student)?
+      - Can you hire me after I finish [my working student activity](Working_student)?
+      - Any chances about me being hired after my [working student activity](Working_student)?
+
+  - intent: Internal_job_change
+    examples: |
+      - Is there also the [opportunity to move to other areas](Internal_job_change) than where I was originally employed?
+      - Is it [possible for me to change my position](Internal_job_change) other than  the area in which I was originally employed?
+      - Can I [change my job profile](Internal_job_change) other than the area in which I was originally employed?
+      - Can I [change my job department](Internal_job_change) other than the area in which I was originally employed?
+      - Can I [switch my job internally](Internal_job_change)?
+      - Possibility for [internal job switch](Internal_job_change)?
+      - Tell me about [internal job changes](Internal_job_change)
+      - Would it be possible for me to [change my job internally](Internal_job_change)?
+      - Is there any chance for me to [switch my job within the company](Internal_job_change)?
+      - Chances about me [switching to an internal job profile within the company](Internal_job_change)?
+      - Do you support [internal job switches](Internal_job_change)?
+      - Can I [change my job within the company](Internal_job_change)?
+
+  - intent: Travel_expense_interview
+    examples: |
+      - Will my [travel expenses](Travel_expense_interview) be reimbursed when I come to the interview?
+      - Can I reimburse my [travel expenses when I come to the interview](Travel_expense_interview)?
+      - Would my [travel expenses be reimbursed to me when I come to the interview](Travel_expense_interview)?
+      - Can I [reimburse my travel expenses](Travel_expense_interview) when I appear for the interview?
+      - Tell me about the [travel expenses about the interview](Travel_expense_interview)
+      - Would you [reimburse me for my travel expenses for the interview](Travel_expense_interview)?
+      - Can I reimburse the [expenses I occur while I travel to the interview](Travel_expense_interview)?
+      - Reimbursement for the [travel expenses occured when appearing for the interview](Travel_expense_interview)
+      - Do you provide any reimbursement for the [travel expenses occured while I travel to the interview](Travel_expense_interview)?
+
+  - synonym: Dornier group
+    examples: |
+      - Company
+      - firm
+      - Dornier
+
+  - synonym: Job change
+    examples: |
+      - job switch
+      - Switching jobs
+
+  - synonym: Career advancement
+    examples: |
+      - Promotion
+      - Career promotion
+
+  - synonym: working hours
+    examples: |
+      - working time
+      - working hours per day
+
+  - synonym: Promoting strengths
+    examples: |
+      - Promoting talents
+      - Talents and strengths
+
+  - synonym: breaks
+    examples: |
+      - allowed breaks
+      - breaks permissible
+      - number of breaks allowed
+      - permitted breaks
+
+  - synonym: situated
+    examples: |
+      - located
+      - presence
+
+  - synonym: parking facilities
+    examples: |
+      - car park
+      - parking
+      - park my car
+      - park
+
+  - synonym: probationary period
+    examples: |
+      - probation
+      - probation time
+
+  # - intent: query_knowledge_base
+  #   examples: |
+  #     - what [restaurants]{"entity": "object_type", "value": "restaurant"} can you recommend?
+  #     - list some [restaurants]{"entity": "object_type", "value": "restaurant"}
+  #     - can you name some [restaurants]{"entity": "object_type", "value": "restaurant"} please?
+  #     - can you show me some [restaurant]{"entity": "object_type", "value": "restaurant"} options
+  #     - list [German]{"entity": "cuisine"} [restaurants]{"entity": "object_type", "value": "restaurant"}
+  #     - do you have any [mexican]{"entity": "cuisine"} [restaurants]{"entity": "object_type", "value": "restaurant"}?
+  #     - do you know the [price range]{"entity": "attribute", "value": "price-range"} of [that one]{"entity": "mention"}?
+  #     - what [cuisine]{"entity": "attribute"} is [it]{"entity": "mention"}?
+  #     - do you know what [cuisine]{"entity": "attribute"} the [last one]{"entity": "mention", "value": "LAST"} has?
+  #     - does [Donath]{"entity": "restaurant"} have [outside seating]{"entity": "attribute", "value": "outside-seating"}?
+  #     - what is the [price range]{"entity": "attribute", "value": "price-range"} of [Berlin Burrito Company]{"entity": "restaurant"}?
+  #     - what is with [I due forni]{"entity": "restaurant"}?
+  #     - Do you also have any [Vietnamese]{"entity": "cuisine"} [restaurants]{"entity": "object_type", "value": "restaurant"}?
+  #     - What about any [Mexican]{"entity": "cuisine", "value": "mexican"} [restaurants]{"entity": "object_type", "value": "restaurant"}?
+  #     - Do you also know some [Italian]{"entity": "cuisine"} [restaurants]{"entity": "object_type", "value": "restaurant"}?
+  #     - can you tell me the [price range]{"entity": "attribute", "value": "price-range"} of [that restaurant]{"entity": "mention"}?
+  #     - what [cuisine]{"entity": "attribute"} do [they]{"entity": "mention"} have?
+  #     - what [hotels]{"entity": "object_type", "value": "hotel"} can you recommend?
+  #     - please list some [hotels]{"entity": "object_type", "value": "hotel"} in [Frankfurt am Main]{"entity": "city"} for me
+  #     - what [hotels]{"entity": "object_type", "value": "hotel"} do you know in [Berlin]{"entity": "city"}?
+  #     - name some [hotels]{"entity": "object_type", "value": "hotel"} in [Berlin]{"entity": "city"}
+  #     - show me some [hotels]{"entity": "object_type", "value": "hotel"}
+  #     - what are [hotels]{"entity": "object_type", "value": "hotel"} in [Berlin]{"entity": "city"}
+  #     - does the [last]{"entity": "mention", "value": "LAST"} one offer [breakfast]{"entity": "attribute", "value": "breakfast-included"}?
+  #     - does the [second one]{"entity": "mention", "value": "2"} [include breakfast]{"entity": "attribute", "value": "breakfast-included"}?
+  #     - what is the [price range]{"entity": "attribute", "value": "price-range"} of the [second]{"entity": "mention", "value": "2"} hotel?
+  #     - does the [first]{"entity": "mention", "value": "1"} one have [wifi]{"entity": "attribute", "value": "free-wifi"}?
+  #     - does the [third]{"entity": "mention", "value": "3"} one have a [swimming pool]{"entity": "attribute", "value": "swimming-pool"}?
+  #     - what is the [star rating]{"entity": "attribute", "value": "star-rating"} of [Berlin Wall Hostel]{"entity": "hotel"}?
+  #     - Does the [Hilton]{"entity": "hotel"} have a [swimming pool]{"entity": "attribute", "value": "swimming-pool"}?
+
+
+  # - lookup: restaurant
+  #   examples: |
+  #     - Donath
+  #     - Berlin Burrito Company
+  #     - I due forni
+  #     - Lụa Restaurant
+  #     - Pfefferberg
+  #     - Marubi Ramen
+  #     - Gong Gan
+
+  # - lookup: hotel
+  #   examples: |
+  #     - Hilton
+  #     - B&B
+  #     - Berlin Wall Hostel
+  #     - City Hotel
+  #     - Jugendherberge
+  #     - Berlin Hotel

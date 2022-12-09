@@ -1,0 +1,418 @@
+version: "3.1"
+stories:
+  - story: greet and ask user details - story 1
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - action: name_form
+    - active_loop: name_form
+    - slot_was_set:
+      - requested_slot: first_name
+    - slot_was_set:
+      - first_name: jane
+    - slot_was_set:
+      - requested_slot: last_name
+    - slot_was_set:
+      - last_name: jane patel
+    - slot_was_set:
+      - requested_slot: email_address
+    - slot_was_set:
+      - email_address: jane.patel@det.in
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: utter_ask_name_spelled_correctly
+    # - action: utter_remember
+    # - intent: End_chat
+    # - action: utter_End_chat
+
+
+  - story: user searches for a job - story 2
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - action: name_form
+    - active_loop: name_form
+    - slot_was_set:
+      - requested_slot: first_name
+    - slot_was_set:
+      - first_name: jane
+    - slot_was_set:
+      - requested_slot: last_name
+    - slot_was_set:
+      - last_name: jane patel
+    - slot_was_set:
+      - requested_slot: email_address
+    - slot_was_set:
+      - email_address: jane.patel@det.in
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: utter_ask_name_spelled_correctly
+    - intent: affirm_name
+    - action: utter_remember
+    - intent: Current_job_openings
+    - action: utter_Current_job_openings
+    - action: job_form
+    - active_loop: job_form
+    - slot_was_set:
+      - requested_slot: job_type
+    - slot_was_set:
+      - job_type: intern
+    - slot_was_set:
+      - requested_slot: job_domain
+    - slot_was_set:
+      - job_domain: engineering
+    - slot_was_set:
+      - requested_slot: job_keywords
+    - slot_was_set:
+      - job_keywords: Innovationsmanager
+    - slot_was_set:
+      - requested_slot: job_form_confirmation_search
+    - slot_was_set:
+      - job_form_confirmation_search: 
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: utter_ask_job_form_clear_params
+    # - action: action_ask_job_search_confirmation
+    - intent: deny_clear_params
+    - action: action_get_job_search_confirmation
+    - intent: job_results
+    - action: action_job_results
+    - intent: End_chat
+    - action: utter_End_chat
+
+
+  # - story: provide details about company - story 2
+  #   steps:
+  #   - intent: About_Dornier
+  #   - action: utter_About_Dornier
+  #   - intent: Dornier_Business
+  #   - action: utter_Dornier_Business
+  #   - intent: Apply_to_dornier
+  #   - action: utter_Apply_to_dornier
+
+  # - story: User asks about the open job in between chat - story 3
+  #   steps:
+  #   - intent: Benefits_provided
+  #   - intent: Current_job_openings
+  #   - action: utter_Current_job_openings
+  #   - action: utter_Benefits_provided
+  
+  # - story: Switch between multiple contexts - story 4
+  #   steps:
+  #   - intent: Company_pension_scheme
+  #   - intent: Probationary_period
+  #   - action: utter_Company_pension_scheme
+  #   - intent: Travel_expense_interview
+  #   - action: utter_Probationary_period
+  #   - action: utter_Travel_expense_interview  
+
+  # - story: End chat abruptly - story 5
+  #   steps:
+  #   - intent: Company_pension_scheme
+  #   - intent: Probationary_period
+  #   - action: utter_Company_pension_scheme
+  #   - intent: End_chat
+  #   - action: utter_End_chat 
+
+  # - story: About_Dornier
+  #   steps:
+  #     - intent: About_Dornier
+  #     - action: utter_About_Dornier
+
+  # - story: Dornier_Business
+  #   steps:
+  #     - intent: Dornier_Business
+  #     - action: utter_Dornier_Business
+      
+  # - story: Dornier_Locations
+  #   steps:
+  #     - intent: Dornier_Locations
+  #     - action: utter_Dornier_Locations 
+
+  # - story: Dornier_Headquarters
+  #   steps:
+  #     - intent: Dornier_Headquarters
+  #     - action: utter_Dornier_Headquarters
+
+  # - story: Dornier_Workforce
+  #   steps:
+  #     - intent: Dornier_Workforce
+  #     - action: utter_Dornier_Workforce  
+                
+  # - story: Dornier_Projects
+  #   steps:
+  #     - intent: Dornier_Projects
+  #     - action: utter_Dornier_Projects    
+
+               
+  # - story: Business_sector_emobility
+  #   steps:
+  #     - intent: Business_sector_emobility
+  #     - action: utter_Business_sector_emobility      
+
+               
+  # - story: Business_sector_nuclear
+  #   steps:
+  #     - intent: Business_sector_nuclear
+  #     - action: utter_Business_sector_nuclear     
+
+               
+  # - story: Business_sector_water
+  #   steps:
+  #     - intent: Business_sector_water
+  #     - action: utter_Business_sector_water     
+
+               
+  # - story: Business_sector_aviation
+  #   steps:
+  #     - intent: Business_sector_aviation
+  #     - action: utter_Business_sector_aviation     
+
+               
+  # - story: Business_sector_power
+  #   steps:
+  #     - intent: Business_sector_power
+  #     - action: utter_Business_sector_power   
+
+               
+  # - story: Workplace_gender_equality
+  #   steps:
+  #     - intent: Workplace_gender_equality
+  #     - action: utter_Workplace_gender_equality    
+
+               
+  # - story: Workplace_policy
+  #   steps:
+  #     - intent: Workplace_policy
+  #     - action: utter_Workplace_policy      
+
+               
+  # - story: Working_ergonomics
+  #   steps:
+  #     - intent: Working_ergonomics
+  #     - action: utter_Working_ergonomics     
+
+               
+  # - story: Breaks
+  #   steps:
+  #     - intent: Breaks
+  #     - action: utter_Breaks      
+
+               
+  # - story: Nonsmoker_policy
+  #   steps:
+  #     - intent: Nonsmoker_policy
+  #     - action: utter_Nonsmoker_policy     
+
+               
+  # - story: Medical_facilities
+  #   steps:
+  #     - intent: Medical_facilities
+  #     - action: utter_Medical_facilities      
+
+               
+  # - story: Ideal_employee
+  #   steps:
+  #     - intent: Ideal_employee
+  #     - action: utter_Ideal_employee      
+
+               
+  # - story: Leadership_style
+  #   steps:
+  #     - intent: Leadership_style
+  #     - action: utter_Leadership_style     
+
+               
+  # - story: Corporate_culture
+  #   steps:
+  #     - intent: Corporate_culture
+  #     - action: utter_Corporate_culture      
+
+               
+  # - story: Performance_evaluation
+  #   steps:
+  #     - intent: Performance_evaluation
+  #     - action: utter_Performance_evaluation     
+
+               
+  # - story: Promoting_strengths_talents
+  #   steps:
+  #     - intent: Promoting_strengths_talents
+  #     - action: utter_Promoting_strengths_talents      
+
+               
+  # - story: Response_timeline
+  #   steps:
+  #     - intent: Response_timeline
+  #     - action: utter_Response_timeline     
+
+               
+  # - story: Apply_to_dornier
+  #   steps:
+  #     - intent: Apply_to_dornier
+  #     - action: utter_Apply_to_dornier      
+
+               
+  # - story: Application_process
+  #   steps:
+  #     - intent: Application_process
+  #     - action: utter_Application_process    
+
+               
+  # - story: Job_ticket
+  #   steps:
+  #     - intent: Job_ticket
+  #     - action: utter_Job_ticket     
+
+               
+  # - story: Company_pension_scheme
+  #   steps:
+  #     - intent: Company_pension_scheme
+  #     - action: utter_Company_pension_scheme      
+
+               
+  # - story: Christmas_bonus
+  #   steps:
+  #     - intent: Christmas_bonus
+  #     - action: utter_Christmas_bonus     
+
+               
+  # - story: Holiday_pay
+  #   steps:
+  #     - intent: Holiday_pay
+  #     - action: utter_Holiday_pay     
+
+               
+  # - story: Work_from_home
+  #   steps:
+  #     - intent: Work_from_home
+  #     - action: utter_Work_from_home     
+
+               
+  # - story: Work_from_home_100
+  #   steps:
+  #     - intent: Work_from_home_100
+  #     - action: utter_Work_from_home_100      
+
+               
+  # - story: Benefits_provided
+  #   steps:
+  #     - intent: Benefits_provided
+  #     - action: utter_Benefits_provided     
+
+               
+  # - story: Interview_process
+  #   steps:
+  #     - intent: Interview_process
+  #     - action: utter_Interview_process     
+
+               
+  # - story: Abroad_assignment
+  #   steps:
+  #     - intent: Abroad_assignment
+  #     - action: utter_Abroad_assignment      
+
+               
+  # - story: Customers
+  #   steps:
+  #     - intent: Customers
+  #     - action: utter_Customers     
+
+               
+  # - story: Diversity_at_dornier
+  #   steps:
+  #     - intent: Diversity_at_dornier
+  #     - action: utter_Diversity_at_dornier      
+
+               
+  # - story: Company_car
+  #   steps:
+  #     - intent: Company_car
+  #     - action: utter_Company_car      
+
+               
+  # - story: Parking_facilities
+  #   steps:
+  #     - intent: Parking_facilities
+  #     - action: utter_Parking_facilities      
+
+               
+  # - story: Documents_needed
+  #   steps:
+  #     - intent: Documents_needed
+  #     - action: utter_Documents_needed      
+
+               
+  # - story: Probationary_period
+  #   steps:
+  #     - intent: Probationary_period
+  #     - action: utter_Probationary_period      
+
+               
+  # - story: working_hours
+  #   steps:
+  #     - intent: working_hours
+  #     - action: utter_working_hours      
+
+               
+  # - story: Unsolicited_application
+  #   steps:
+  #     - intent: Unsolicited_application
+  #     - action: utter_Unsolicited_application      
+
+               
+  # - story: Internship
+  #   steps:
+  #     - intent: Internship
+  #     - action: utter_Internship      
+
+               
+  # - story: Bachelor_Master_thesis
+  #   steps:
+  #     - intent: Bachelor_Master_thesis
+  #     - action: utter_Bachelor_Master_thesis      
+
+               
+  # - story: Abroad_work
+  #   steps:
+  #     - intent: Abroad_work
+  #     - action: utter_Abroad_work     
+
+               
+  # - story: External_event
+  #   steps:
+  #     - intent: External_event
+  #     - action: utter_External_event      
+
+               
+  # - story: Inhouse_projects
+  #   steps:
+  #     - intent: Inhouse_projects
+  #     - action: utter_Inhouse_projects     
+
+               
+  # - story: Career_advancement_promotion
+  #   steps:
+  #     - intent: Career_advancement_promotion
+  #     - action: utter_Career_advancement_promotion      
+
+               
+  # - story: Working_student
+  #   steps:
+  #     - intent: Working_student
+  #     - action: utter_Working_student    
+
+               
+  # - story: Internal_job_change
+  #   steps:
+  #     - intent: Internal_job_change
+  #     - action: utter_Internal_job_change     
+
+               
+  # - story: Travel_expense_interview
+  #   steps:
+  #     - intent: Travel_expense_interview
+  #     - action: utter_Travel_expense_interview   

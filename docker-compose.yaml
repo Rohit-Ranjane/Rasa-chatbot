@@ -1,0 +1,78 @@
+version: "4.12"
+services:
+  rasa:
+    image: rasa_v1
+    working_dir: /app
+    # build: "./"
+    restart: always
+    volumes: 
+      - ./actions:/app/actions
+      - ./data:/app/data
+      - ./models:/app/models
+
+    command: "run --enable-api --cors \"*\""
+    # depends_on:
+    #   - db_pgsql
+    ports: 
+      - '5005:5005'
+    networks:
+      - all 
+    # build:
+    #   context: ./sub  # Docker context from folder of this file; needed to include requirements.txt
+    #   dockerfile: Dockerfile
+
+    # ports:
+    #   - "5550:5550"  # map container interal 5550 port to publicly accessible 5550 port
+    # # stdin_open: true  # same as docker -i (interactive)
+    # tty: true  # same as docker -t (tty); see if sub actually receives pub messages
+    # command: ["python", "main.py", "--ip", "0.0.0.0"]  # sub module binds, so no need for a specific IP
+    # volumes:
+    #   - ./result:/app/result
+    #   - ./detected_result:/app/detected_result
+
+  rasa_actions:
+    image: rasa_v1
+    working_dir: /app/actions
+    # build: "./"
+    restart: always
+    volumes: 
+      - ./actions:/app/actions
+    command: "run actions"
+    # depends_on:
+    #   - db_pgsql
+    ports: 
+      - '5055:5055'
+    networks:
+      - all
+
+  db_pgsql:
+    image: db_post
+    # build: "./"
+    # environment:   # Set up postgres database name and password
+    #   POSTGRES_PASSWORD: 7644
+    #   POSTGRES_DB: Rasa
+    #   POSTGRES_USER: postgres
+    # working_dir: /app 
+    #
+    # restart: always
+    volumes: 
+      - ./pg_data/:/var/lib/postgresql/data/
+    ports:
+      - '5432:5432'
+    networks:
+      - all
+
+  chatbot_ui:
+    image: chatbot_ui
+    ports:
+      - '80:80'
+    # expose:
+    #   - '1998:1998'
+    networks:
+      - all
+
+networks:
+  all:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: 'true'

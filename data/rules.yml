@@ -1,0 +1,613 @@
+version: "3.1"
+rules:
+
+  - rule: start_bot
+    steps:
+      - intent: start_bot
+      - action: utter_start_bot
+
+  - rule: activate_form
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - action: name_form
+      - active_loop: name_form
+  
+
+  - rule: help
+    steps:
+      - intent: help
+      - action: utter_help
+      
+  - rule: benefits
+    steps:
+      - intent: benefits
+      - action: utter_benefits
+      
+  - rule: info_abt_interview
+    steps:
+      - intent: info_abt_interview
+      - action: utter_info_abt_interview
+
+  # - rule: FAQs
+  #   steps:
+  #     - intent: faq
+  #     - action: utter_faq
+
+  # - rule: Implementation of the simple-Fallback
+  #   steps:
+  #     - intent: nlu_fallback
+  #     - action: action_default_ask_affirmation   
+
+  # two stage fallback:
+  - rule: Implementation of the Two-Stage-Fallback
+    steps:
+      - intent: nlu_fallback
+      - action: action_two_stage_fallback
+      - active_loop: action_two_stage_fallback
+
+
+  # - rule: Activate form
+  #   steps:
+  #   - action: utter_greet
+  #   - action: name_form
+  #   - active_loop: name_form
+
+  - rule: Submit form
+    condition:
+    - active_loop: name_form
+    steps:
+    - action: name_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: utter_ask_name_spelled_correctly
+    
+  - rule: Name validation
+    steps:
+    - intent: affirm_name
+    - action: utter_remember
+
+  - rule: Name denial-1
+    steps:
+    - intent: deny_name
+    - action: action_ask_name_correct
+    
+  - rule: Name denial-2
+    steps:
+    - intent: clear_first_name
+    - action: action_name_params_clear
+    # - action: utter_ask_name_form_first_name
+    - action: name_form
+    - active_loop: name_form
+  
+  # - rule: Name denial-2-1
+  #   steps:
+  #   - action: action_name_params_clear
+  #   - intent: User_details_first_name
+  #   - action: utter_ask_name_form_first_name
+  #   - action: name_form
+  #   - active_loop: name_form
+
+  - rule: Name denial-3
+    steps:
+    - intent: clear_last_name
+    - action: action_name_params_clear
+    # - action: utter_ask_name_form_last_name
+    - action: name_form
+    - active_loop: name_form
+    
+  # - rule: Name denial-3-1
+  #   steps:
+  #   - action: action_name_params_clear
+  #   - intent: User_details_last_name
+  #   - action: utter_ask_name_form_last_name
+  #   - action: name_form
+  #   - active_loop: name_form
+
+  - rule: Name denial-4
+    steps:
+    - intent: clear_email_address
+    - action: action_name_params_clear
+    # - action: utter_ask_name_form_email_address
+    - action: name_form
+    - active_loop: name_form
+  
+  # - rule: Name denial-4-1
+  #   steps:
+  #   - action: action_name_params_clear
+  #   - intent: User_details_email_address
+  #   - action: utter_ask_name_form_email_address
+  #   - action: name_form
+  #   - active_loop: name_form
+
+  - rule: Name denial-5
+    steps:
+    - intent: clear_all_name
+    - action: action_name_params_clear
+    - action: utter_ask_name_form_first_name
+    # - action: name_form
+    # - active_loop: name_form
+
+  # - rule: Name denial-6
+  #   steps:
+  #   - action: utter_ask_name_form_first_name
+  #   - intent: User_details_first_name
+  #   - action: name_form
+  #   - active_loop: name_form
+
+  # - rule: first_name
+  #   steps:
+  #   - action: utter_ask_name_form_first_name
+  #   - intent: User_details_first_name
+
+  # - rule: last_name
+  #   steps:
+  #   - action: utter_ask_name_form_last_name
+  #   - intent: User_details_last_name
+
+  # - rule: email_address
+  #   steps:
+  #   - action: utter_ask_name_form_email_address
+  #   - intent: User_details_email_address
+
+  - rule: Submit job
+    condition:
+    - active_loop: job_form
+    steps:
+    - action: job_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: utter_ask_job_form_clear_params 
+    # - action: action_ask_job_search_confirmation
+    # - action: action_get_job_search_confirmation
+
+  - rule: job search-1
+    steps:
+    - intent: deny_clear_params
+    - action: action_get_job_search_confirmation
+    
+
+  - rule: Clear params - 1
+    steps:
+    - intent: affirm_clear_params
+    - action: action_ask_job_params_clear
+
+  - rule: Clear params -2
+    steps:
+    - intent: clear_job_type
+    - action: action_job_params_clear
+    # - action: utter_ask_job_form_job_type
+    - action: job_form
+    - active_loop: job_form
+    
+
+  - rule: Clear params-3
+    steps:
+    - intent: clear_job_domain
+    - action: action_job_params_clear
+    # - action: utter_ask_job_form_job_domain
+    - action: job_form
+    - active_loop: job_form
+
+  - rule: Clear params - 4
+    steps:
+    - intent: clear_job_keywords
+    - action: action_job_params_clear
+    # - action: utter_ask_job_form_job_keywords
+    - action: job_form
+    - active_loop: job_form
+
+  - rule: Clear params - 5
+    steps:
+    - intent: clear_all
+    - action: action_job_params_clear
+    - action: utter_ask_job_form_job_type
+    - action: job_form
+    - active_loop: job_form
+
+  - rule: job search-3
+    steps:
+    - intent: deny_job
+    - action: action_get_job_search_confirmation
+
+
+  - rule: Activate job form
+    steps:
+    - intent: Current_job_openings
+    - action: utter_Current_job_openings
+    - action: job_form
+    - active_loop: job_form
+
+  - rule: provide job link in button
+    steps:
+    - action: action_get_job_search_confirmation
+    - intent: job_results
+    - action: action_job_results 
+
+
+  # - rule: job level
+  #   condition:
+  #   - active_loop: job_form
+  #   steps:
+  #   - action: utter_Current_job_openings
+  #   - intent: User_details_job_level
+  #   - action: utter_ask_job_form_job_level
+
+  # - rule: job domain
+  #   condition:
+  #   - active_loop: job_form
+  #   steps:
+  #   - action: utter_ask_job_form_job_level
+  #   - intent: User_details_job_domain
+  #   - action: utter_ask_job_form_job_domain
+
+  # - rule: years of experience
+  #   condition:
+  #   - active_loop: job_form
+  #   steps:
+  #   - action: utter_ask_job_form_job_domain
+  #   - intent: User_details_years_experience
+  #   - action: utter_ask_job_form_years_experience
+
+  - rule: help
+    steps:
+      - intent: help
+      - action: utter_help
+
+  - rule: ask_rating
+    steps:
+      - intent: rating
+      - action: utter_provide_rating
+
+  - rule: rating_response
+    steps:
+      - intent: rating_1
+      - action: utter_respond_rating
+
+  - rule: rating_response
+    steps:
+      - intent: rating_2
+      - action: utter_respond_rating
+
+  - rule: rating_response
+    steps:
+      - intent: rating_3
+      - action: action_save_conversation
+      - action: utter_respond_rating
+
+  - rule: rating_response
+    steps:
+      - intent: rating_4
+      - action: action_save_conversation
+      - action: utter_respond_rating
+
+  - rule: About_Dornier
+    steps:
+      - intent: About_Dornier
+      - action: utter_About_Dornier
+
+  - rule: Dornier_Business
+    steps:
+      - intent: Dornier_Business
+      - action: utter_Dornier_Business
+      
+  - rule: Dornier_Locations
+    steps:
+      - intent: Dornier_Locations
+      - action: utter_Dornier_Locations 
+
+  - rule: Dornier_Headquarters
+    steps:
+      - intent: Dornier_Headquarters
+      - action: utter_Dornier_Headquarters
+
+  - rule: Dornier_Workforce
+    steps:
+      - intent: Dornier_Workforce
+      - action: utter_Dornier_Workforce  
+                
+  - rule: Dornier_Projects
+    steps:
+      - intent: Dornier_Projects
+      - action: utter_Dornier_Projects    
+
+               
+  - rule: Business_sector_emobility
+    steps:
+      - intent: Business_sector_emobility
+      - action: utter_Business_sector_emobility      
+
+               
+  - rule: Business_sector_nuclear
+    steps:
+      - intent: Business_sector_nuclear
+      - action: utter_Business_sector_nuclear     
+
+               
+  - rule: Business_sector_water
+    steps:
+      - intent: Business_sector_water
+      - action: utter_Business_sector_water     
+
+               
+  - rule: Business_sector_aviation
+    steps:
+      - intent: Business_sector_aviation
+      - action: utter_Business_sector_aviation     
+
+               
+  - rule: Business_sector_power
+    steps:
+      - intent: Business_sector_power
+      - action: utter_Business_sector_power   
+
+               
+  - rule: Workplace_gender_equality
+    steps:
+      - intent: Workplace_gender_equality
+      - action: utter_Workplace_gender_equality    
+
+               
+  - rule: Workplace_policy
+    steps:
+      - intent: Workplace_policy
+      - action: utter_Workplace_policy      
+
+               
+  - rule: Working_ergonomics
+    steps:
+      - intent: Working_ergonomics
+      - action: utter_Working_ergonomics     
+
+               
+  - rule: Breaks
+    steps:
+      - intent: Breaks
+      - action: utter_Breaks      
+
+               
+  - rule: Nonsmoker_policy
+    steps:
+      - intent: Nonsmoker_policy
+      - action: utter_Nonsmoker_policy     
+
+               
+  - rule: Medical_facilities
+    steps:
+      - intent: Medical_facilities
+      - action: utter_Medical_facilities      
+
+               
+  - rule: Ideal_employee
+    steps:
+      - intent: Ideal_employee
+      - action: utter_Ideal_employee      
+
+               
+  - rule: Leadership_style
+    steps:
+      - intent: Leadership_style
+      - action: utter_Leadership_style     
+
+               
+  - rule: Corporate_culture
+    steps:
+      - intent: Corporate_culture
+      - action: utter_Corporate_culture      
+
+               
+  - rule: Performance_evaluation
+    steps:
+      - intent: Performance_evaluation
+      - action: utter_Performance_evaluation     
+
+               
+  - rule: Promoting_strengths_talents
+    steps:
+      - intent: Promoting_strengths_talents
+      - action: utter_Promoting_strengths_talents      
+
+               
+  - rule: Response_timeline
+    steps:
+      - intent: Response_timeline
+      - action: utter_Response_timeline     
+               
+  - rule: Apply_to_dornier
+    steps:
+      - intent: Apply_to_dornier
+      - action: utter_Apply_to_dornier      
+
+               
+  - rule: Application_process
+    steps:
+      - intent: Application_process
+      - action: utter_Application_process    
+
+               
+  - rule: Job_ticket
+    steps:
+      - intent: Job_ticket
+      - action: utter_Job_ticket     
+
+               
+  - rule: Company_pension_scheme
+    steps:
+      - intent: Company_pension_scheme
+      - action: utter_Company_pension_scheme      
+
+               
+  - rule: Christmas_bonus
+    steps:
+      - intent: Christmas_bonus
+      - action: utter_Christmas_bonus     
+
+               
+  - rule: Holiday_pay
+    steps:
+      - intent: Holiday_pay
+      - action: utter_Holiday_pay     
+
+               
+  - rule: Work_from_home
+    steps:
+      - intent: Work_from_home
+      - action: utter_Work_from_home     
+
+               
+  - rule: Work_from_home_100
+    steps:
+      - intent: Work_from_home_100
+      - action: utter_Work_from_home_100      
+
+               
+  - rule: Benefits_provided
+    steps:
+      - intent: Benefits_provided
+      - action: utter_Benefits_provided     
+
+               
+  - rule: Interview_process
+    steps:
+      - intent: Interview_process
+      - action: utter_Interview_process     
+
+  # - rule: Current_job_openings
+  #   steps:
+  #     - intent: Current_job_openings
+  #     - action: utter_Current_job_openings    
+
+  - rule: Abroad_assignment
+    steps:
+      - intent: Abroad_assignment
+      - action: utter_Abroad_assignment      
+
+               
+  - rule: Customers
+    steps:
+      - intent: Customers
+      - action: utter_Customers     
+
+               
+  - rule: Diversity_at_dornier
+    steps:
+      - intent: Diversity_at_dornier
+      - action: utter_Diversity_at_dornier      
+
+               
+  - rule: Company_car
+    steps:
+      - intent: Company_car
+      - action: utter_Company_car      
+
+               
+  - rule: Parking_facilities
+    steps:
+      - intent: Parking_facilities
+      - action: utter_Parking_facilities      
+
+               
+  - rule: Documents_needed
+    steps:
+      - intent: Documents_needed
+      - action: utter_Documents_needed      
+
+               
+  - rule: Probationary_period
+    steps:
+      - intent: Probationary_period
+      - action: utter_Probationary_period      
+
+               
+  - rule: working_hours
+    steps:
+      - intent: working_hours
+      - action: utter_working_hours      
+
+               
+  - rule: Unsolicited_application
+    steps:
+      - intent: Unsolicited_application
+      - action: utter_Unsolicited_application      
+
+               
+  - rule: Internship
+    steps:
+      - intent: Internship
+      - action: utter_Internship      
+
+               
+  - rule: Bachelor_Master_thesis
+    steps:
+      - intent: Bachelor_Master_thesis
+      - action: utter_Bachelor_Master_thesis      
+
+               
+  - rule: Abroad_work
+    steps:
+      - intent: Abroad_work
+      - action: utter_Abroad_work     
+
+               
+  - rule: External_event
+    steps:
+      - intent: External_event
+      - action: utter_External_event      
+
+               
+  - rule: Inhouse_projects
+    steps:
+      - intent: Inhouse_projects
+      - action: utter_Inhouse_projects     
+
+               
+  - rule: Career_advancement_promotion
+    steps:
+      - intent: Career_advancement_promotion
+      - action: utter_Career_advancement_promotion      
+
+               
+  - rule: Working_student
+    steps:
+      - intent: Working_student
+      - action: utter_Working_student    
+
+  - rule: Notice_period
+    steps:
+      - intent: Notice_period
+      - action: utter_Notice_period   
+
+  - rule: Internal_job_change
+    steps:
+      - intent: Internal_job_change
+      - action: utter_Internal_job_change     
+
+               
+  - rule: Travel_expense_interview
+    steps:
+      - intent: Travel_expense_interview
+      - action: utter_Travel_expense_interview   
+               
+  - rule: End_chat
+    steps:
+      - intent: End_chat
+      - action: utter_End_chat   
+
+               
+  # - rule: Ask_user_details
+  #   steps:
+  #     - action: utter_Ask_user_details
+  #     - intent: User_details
+  #     - action: utter_User_details
+               
+  - rule: out_of_scope
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  - rule: I'm a bot
+    steps:
+      - intent: i_am_a_bot
+      - action: utter_iamabot  

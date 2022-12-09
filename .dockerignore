@@ -1,0 +1,13 @@
+UI/*
+**/*.md
+venv
+UI_test.py
+xml_search.py
+yml_reader.py
+txt_to_lookup.py
+Test.py
+csv_to_txt.py
+combine_txts_cleaned.py
+examplesdomain.yml
+first_name_german.yml
+Y10A_C1-gdi-64-C1-de.EXE

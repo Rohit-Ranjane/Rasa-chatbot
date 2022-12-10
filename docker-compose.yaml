@@ -1,7 +1,7 @@
 version: "4.12"
 services:
   rasa:
-    image: rohitr1997/rasa_v1:latest
+    image: rohitr1997/rasa_v1:1.0
 #     container_name: my-rasa-container
     working_dir: /app
     # build: "./"
@@ -31,8 +31,8 @@ services:
     #   - ./result:/app/result
     #   - ./detected_result:/app/detected_result
 
-  rasa_actions:
-    image: rohitr1997/rasa_v1:latest
+  rasa-actions:
+    image: rohitr1997/rasa_v1:1.0
 #     container_name: my-rasa-actions-container
     working_dir: /app/actions
     # build: "./"
@@ -47,7 +47,7 @@ services:
     networks:
       - all
 
-  db_pgsql:
+  db-pgsql:
     image: rohitr1997/db_post:latest
 #     container_name: my-db-container
     # build: "./"
@@ -65,7 +65,7 @@ services:
     networks:
       - all
 
-  chatbot_ui:
+  chatbot-ui:
     image: rohitr1997/chatbot_ui:latest
 #     container_name: my-ui-container
     ports:
